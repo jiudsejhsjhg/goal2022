@@ -1,0 +1,12 @@
+ls         list
+ls  -a  -h-1
+ls a.txt -1h
+cat,   con cate nate
+cat file1.txt file2.  txt file3. txt > files.txt
+将文件们拼接放入files.txt里
+split
+split -b 5M aa.mkv aa-.      将aa.mkv拆分成5M一个的文件，以aa-为前缀    echo回显
+
+cd      change - directory.
+cd   绝对路径
+cd  绝对路径（相对于当前的工作目录）
