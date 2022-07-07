@@ -8,9 +8,24 @@
   <title>Document</title>
 
   <style>
+    html {
+      background-color: #ccbbff;
+    }
+
+    h1 {
+      color: red;
+    }
+
+    .c {
+      background-color: rgb(199, 146, 208);
+      color: slateblue;
+    }
+
     .a {
+
       width: 200px;
       height: 200px;
+      box-shadow: 20px 20px 30px rgba(0, 0, 0, .9);
     }
 
     .b {
@@ -22,10 +37,10 @@
       height: 400px;
 
     }
-    #on{
+
+    #on {
       margin-left: 45px;
     }
-
   </style>
 
 
@@ -36,7 +51,8 @@
   <h1>lorem</h1>
   <h2>Lorem,ipsum.</h2>
   <h3>Lorem,ipsum.</h3>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam porro adipisci unde optio sit maxime nihil
+  <p class="c">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam porro adipisci unde optio sit maxime
+    nihil
     mollitia consequuntur, enim dolorem explicabo accusantium? Optio nulla atque, ducimus illo aliquam a vitae?</p>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus voluptate nihil dignissimos! Totam, quae.
     Laudantium impedit vel officia harum debitis ullam reiciendis, itaque ducimus fugiat dolorem quis. Explicabo, non
@@ -123,125 +139,127 @@
     <input hidden type="text" name="sourceid" value="UTF">
     <button type="submit">在新窗口打开搜索结果</button>
 
-<hr>
-<form action="">
-<p>个人信息调查表</p>
-<dl>
-  <dt> 性别  </dt>
-  <dd>
-    <label><input type="radio" name="gender" value="hh">男</label>
-    <label><input type="radio" name="gender" value="hh">女</label>
-  </dd>
-  <dt>年龄</dt>
-  <dd>
-  <select name="sel" id="">
-    <option value="" hidden>请选择</option>
-    <optgroup label="少年">
-     <option value="1-6">1到6岁</option>
-     <option value="6-12">6到12岁</option>
-    </optgroup>
+    <hr>
+    <form action="">
+      <p>个人信息调查表</p>
+      <dl>
+        <dt> 性别 </dt>
+        <dd>
+          <label><input type="radio" name="gender" value="hh">男</label>
+          <label><input type="radio" name="gender" value="hh">女</label>
+        </dd>
+        <dt>年龄</dt>
+        <dd>
+          <select name="sel" id="">
+            <option value="" hidden>请选择</option>
+            <optgroup label="少年">
+              <option value="1-6">1到6岁</option>
+              <option value="6-12">6到12岁</option>
+            </optgroup>
 
-    <option value="" hidden>请选择</option>
-    <optgroup label="青年">
-     <option value="13-15">13到15岁</option>
-     <option value="16-18">16到18岁</option>
-    </optgroup>
+            <option value="" hidden>请选择</option>
+            <optgroup label="青年">
+              <option value="13-15">13到15岁</option>
+              <option value="16-18">16到18岁</option>
+            </optgroup>
 
-    <option value="" hidden>请选择</option>
-    <optgroup label="大人">
-     <option value="19-26">19到26岁</option>
-     <option value="27-100">27到100岁</option>
-    </optgroup>
+            <option value="" hidden>请选择</option>
+            <optgroup label="大人">
+              <option value="19-26">19到26岁</option>
+              <option value="27-100">27到100岁</option>
+            </optgroup>
 
-  </select>
+          </select>
 
-  </dd>
-<dt>生日</dt>
-<dd>
-  <input onclick type="date" value="2022/07/05" name="birtday">
-</dd>
-<dt>生辰</dt>
-<input type="time">
+        </dd>
+        <dt>生日</dt>
+        <dd>
+          <input onclick type="date" value="2022/07/05" name="birtday">
+        </dd>
+        <dt>生辰</dt>
+        <input type="time">
 
-<dt>照片</dt>
-<dd><input hidden name="avatar" type="file" id="avatar-upload">
-<label for="avatar-upload">点我上传照片</label></dd>
-<dt>自我介绍</dt>
-  <textarea name="field" id="" cols="30" rows="10">输入文字</textarea>
+        <dt>照片</dt>
+        <dd><input hidden name="avatar" type="file" id="avatar-upload">
+          <label for="avatar-upload">点我上传照片</label>
+        </dd>
+        <dt>自我介绍</dt>
+        <textarea name="field" id="" cols="30" rows="10">输入文字</textarea>
 
-</dl>
-<fieldset>
-<legend>forbid</legend>
-<input type="text">
-<input type="text">
-<input type="text">
-<input type="text">
-<input type="text">
-<input type="text">
-<input type="text">
+      </dl>
+      <fieldset>
+        <legend>forbid</legend>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
 
-</fieldset>
+      </fieldset>
 
-<button>提交</button>
-<button type="reset">重置</button>
+      <button>提交</button>
+      <button type="reset">重置</button>
 
-</form>
+    </form>
 
-<table border="4">
-  <col>
-  <col bgcolor="red">
-  <thead>
-    <tr>
-      <td>编号</td>
-      <td>品名</td>
-      <td>进价 </td>
-      <td>出价</td>
-    </tr>
-    <tr>
-      <td>66</td>
-      <td>如花</td>
-      <td rowspan="2">六块</td>
-      <td>250</td>
-    </tr>
-    <tr>
-      <td>22</td>
-      <td>母老虎</td>
-      <td>250</td>
-    </tr>
-    <tr>
-      <td>24</td>
-      <td>翠花</td>
-      <td>八块八</td>
-      <td>250</td>
-    </tr>
+    <table border="4">
+      <col>
+      <col bgcolor="red">
+      <thead>
+        <tr>
+          <td>编号</td>
+          <td>品名</td>
+          <td>进价 </td>
+          <td>出价</td>
+        </tr>
+        <tr>
+          <td>66</td>
+          <td>如花</td>
+          <td rowspan="2">六块</td>
+          <td>250</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>母老虎</td>
+          <td>250</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>翠花</td>
+          <td>八块八</td>
+          <td>250</td>
+        </tr>
 
-  </thead>
-</table>
-<hr>
+      </thead>
+    </table>
+    <hr>
     <!-- <div> -->
-      <!-- <a href="jd.com/?cu=true&utm_source=baidu-pinzhuan&utm_medium=cpc&utm_campaign=t_288551095_baidupinzhuan&utm_term=0f3d30c8dba7459bb52f2eb5eba8ac7d_0_ed8c1fd9a0094eeaa449cef6179d3953"> -->
-        <!-- <img  usemap="#mapl" class="news-img" src="./q8.jpg" alt="费德勒"> -->
+    <!-- <a href="jd.com/?cu=true&utm_source=baidu-pinzhuan&utm_medium=cpc&utm_campaign=t_288551095_baidupinzhuan&utm_term=0f3d30c8dba7459bb52f2eb5eba8ac7d_0_ed8c1fd9a0094eeaa449cef6179d3953"> -->
+    <!-- <img  usemap="#mapl" class="news-img" src="./q8.jpg" alt="费德勒"> -->
     <!-- </div> -->
 
   </form>
 
-<hr>
-<img  usemap="#mapl" class="news-img" src="https://drscdn.500px.org/photo/174778125/m%3D1170_k%3D1/2841ccf2a3720e8e794a6a6930f6ff2c" alt="费德勒">
-<map name="mapl">
-<area shape="rect" coords="100 150 100 250" href="https://www.jd.com/" target="_blank" alt="">
-<area shape="circle" coords="100 150 100 250" href="https://www.jd.com/" target="_blank" alt="">
+  <hr>
+  <img usemap="#mapl" class="news-img"
+    src="https://drscdn.500px.org/photo/174778125/m%3D1170_k%3D1/2841ccf2a3720e8e794a6a6930f6ff2c" alt="费德勒">
+  <map name="mapl">
+    <area shape="rect" coords="100 150 100 250" href="https://www.jd.com/" target="_blank" alt="">
+    <area shape="circle" coords="100 150 100 250" href="https://www.jd.com/" target="_blank" alt="">
 
-</map>
-<hr>
+  </map>
+  <hr>
 
-<a target="_blank" href="https://www.newduba.cn/sv.html?f=chedhntab">百度</a>
-<div>
-  <iframe src="https://www.newduba.cn/sv.html?f=chedhntab" width="300" height ="150" frameborder="0"></iframe>
+  <a target="_blank" href="https://www.newduba.cn/sv.html?f=chedhntab">百度</a>
+  <div>
+    <iframe src="https://www.newduba.cn/sv.html?f=chedhntab" width="300" height="150" frameborder="0"></iframe>
 
-</div>
-<div>aaa&nbsp;&nbsp;&nbsp;&nbsp;bbbbb</div>
-<pre>aaaa   🖊    bbbbb</pre>
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&gt;span&gt;&gt;span&gt;
+  </div>
+  <div>aaa&nbsp;&nbsp;&nbsp;&nbsp;bbbbb</div>
+  <pre>aaaa   🖊    bbbbb</pre>
+  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&gt;span&gt;&gt;span&gt;
 
 </body>
 
