@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+
+* {
+  /* background-color: rgba(0,0,0,0.08); */
+  box-shadow: inset 0 0 1px black;
+}
+html {
+  xzoom: 2;
+}
+
+html, body, header {
+  height: 100%;
+  margin: 0;
+}
+
+header {
+  font-size: 0;
+}
+header > * {
+  display: inline-block;
+}
+header > div {
+  width: calc(100% - 450px);
+  height: 100%;
+  }
+header > aside {
+  width: 150px;
+  height: 100%;
+  background-color: bisque;
+}
+
+
+.ww {
+  height: 100px;
+  background-color: pink;
+}
+.tt {
+  height: calc(100% - 100px);
+  overflow: scroll;
+  background-color: pink;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <aside><span></span></aside>
+    <div>
+      <div class="ww"></div>
+      <div class="tt"></div>
+    </div>
+    <aside></aside>
+    <aside></aside>
+  </header>
+</body>
+</html>
