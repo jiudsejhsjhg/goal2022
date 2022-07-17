@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    div {
+      position: relative;
+      display: inline-block;
+    }
+
+    ul {
+      list-style: none;
+      display: none;
+      margin: 0 auto;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      padding: 20px;
+      white-space: nowrap;
+      background-color: #333333;
+      color: #898989;
+
+    }
+
+    div:hover>ul {
+      display: block;
+      /* padding: 0; */
+    }
+
+    ul li:hover {
+      background-color: #04395e;
+
+    }
+
+    ol>li {
+      list-style: none;
+      display: none;
+      position: inherit;
+      top: 0;
+      padding: 0;
+      white-space: nowrap;
+
+
+    }
+
+
+    ol:hover>li {
+      display: inline-block;
+
+    }
+
+  </style>
+</head>
+
+<body>
+  <div>
+    文件
+    <ul>
+      <li>新建文本文件</li>
+      <li>新建文本</li>
+      <li>新建窗口</li>
+      <hr>
+      <li>打开文件</li>
+      <li>打开文件夹</li>
+      <li>从文件打开工作区</li>
+      <ol class="q">
+        最近打开的文件
+        <li>文件.html</li>
+        <li>文件.html</li>
+        <li>文件.html</li>
+        <li>文件.html</li>
+        <li>文件.html</li>
+      </ol>
+      <hr>
+      <li>将文件夹添加到工作区</li>
+      <li>将工作区另存为</li>
+      <li>复制工作区</li>
+      <hr>
+      <li>保存</li>
+      <li>另存为</li>
+      <li>全部保存</li>
+      <hr>
+      <ol>共享
+        <li>共享1</li>
+        <li>共享1</li>
+        <li>共享1</li>
+        <li>共享1</li>
+        <li>共享1</li>
+        <li>共享1</li>
+
+      </ol>
+      <hr>
+      <li>自动保存</li>
+      <ol>
+        首选项
+        <li>首先项1</li>
+        <li>首先项1</li>
+        <li>首先项1</li>
+        <li>首先项1</li>
+        <li>首先项1</li>
+        <li>首先项1</li>
+      </ol>
+      <hr>
+      <li>还原文件</li>
+      <li>关闭编辑器</li>
+      <li>关闭文件夹</li>
+      <li>关闭窗口</li>
+      <hr>
+<li>退出</li>
+
+    </ul>
+
+  </div>
+</body>
+
+</html>
