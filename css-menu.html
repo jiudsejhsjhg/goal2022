@@ -6,116 +6,115 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
   <style>
-    div {
-      position: relative;
-      display: inline-block;
+    * {
+     xbackground-color: rgba(0, 0, 0, 0.08);
+      xbox-shadow: inset 0 0 1px red;
     }
 
     ul {
       list-style: none;
-      display: none;
-      margin: 0 auto;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* 只有第一层的菜单需要横向排列，所以是.menu > li而不是.menu li*/
+    .menu > li {
+      display: inline-block;
+    }
+
+    /*所有的菜单项都得成为它子菜单的定位祖先
+所以不是用.menu > li而是用.menu li*/
+    .menu li {
+      position: relative;
+      white-space: nowrap;
+      /* 设定文字不折行 */
+      padding: 0 .5em;
+      padding: 0 .5em;
+    }
+
+    .menu ul{
+      padding-top: .5em;
+      padding-bottom: .5em;
       position: absolute;
       left: 0;
-      top: 100%;
-      padding: 20px;
-      white-space: nowrap;
-      background-color: #333333;
-      color: #898989;
+       top: 100%;
+       display: none;
+       box-shadow: 0 0 5px #333;
+
+    }
+/* 选中第三层及更深层的ul */
+    .menu ul ul{
+      left: 100%;
+      top:-.5em;
 
     }
 
-    div:hover>ul {
-      display: block;
-      /* padding: 0; */
+    .menu li:hover > ul{
+   display: block;
     }
 
-    ul li:hover {
-      background-color: #04395e;
-
+    .menu, .menu ul{
+      background-color: #3c3c3c;
+      color: #c4c4c4;
     }
+  .menu li:hover{
+    background-color: #04395e;
+  }
+  .menu li li{
+    padding: 0 100px 0 10px;
+  }
 
-    ol>li {
-      list-style: none;
-      display: none;
-      position: inherit;
-      top: 0;
-      padding: 0;
-      white-space: nowrap;
-
-
-    }
-
-
-    ol:hover>li {
-      display: inline-block;
-
-    }
+  li .sep{
+    border-top: 1px solid;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+.menu li li > span{
+  position: absolute;
+right: 0;
+top: 0;
+}
 
   </style>
 </head>
 
 <body>
-  <div>
-    文件
-    <ul>
-      <li>新建文本文件</li>
-      <li>新建文本</li>
-      <li>新建窗口</li>
-      <hr>
-      <li>打开文件</li>
-      <li>打开文件夹</li>
-      <li>从文件打开工作区</li>
-      <ol class="q">
-        最近打开的文件
-        <li>文件.html</li>
-        <li>文件.html</li>
-        <li>文件.html</li>
-        <li>文件.html</li>
-        <li>文件.html</li>
-      </ol>
-      <hr>
-      <li>将文件夹添加到工作区</li>
-      <li>将工作区另存为</li>
-      <li>复制工作区</li>
-      <hr>
-      <li>保存</li>
-      <li>另存为</li>
-      <li>全部保存</li>
-      <hr>
-      <ol>共享
-        <li>共享1</li>
-        <li>共享1</li>
-        <li>共享1</li>
-        <li>共享1</li>
-        <li>共享1</li>
-        <li>共享1</li>
+  <ul class="menu">
+    <li>文件
 
-      </ol>
-      <hr>
-      <li>自动保存</li>
-      <ol>
-        首选项
-        <li>首先项1</li>
-        <li>首先项1</li>
-        <li>首先项1</li>
-        <li>首先项1</li>
-        <li>首先项1</li>
-        <li>首先项1</li>
-      </ol>
-      <hr>
-      <li>还原文件</li>
-      <li>关闭编辑器</li>
-      <li>关闭文件夹</li>
-      <li>关闭窗口</li>
-      <hr>
-<li>退出</li>
+      <ul>
+        <li>打开<span>Ctrl+S</span></li>
+        <li class="sep"></li>
+        <li>保存<span>Ctrl+S</span></li>
+        <li>保存<span>Ctrl+S</span></li>
+        <li>另存为...
 
-    </ul>
+        <ul>
+          <li>utf8</li>
+          <li>gb2312</li>
+          <li>other
+            <ul>
+              <li>utf8</li>
+              <li>gb2312</li>
+              <li>other</li>
+            </ul>
+        </li>
 
-  </div>
+      </ul>
+
+    <li>查看
+      <ul>
+        <li>保存</li>
+        <li>保存</li>
+        <li>另存为...</li>
+      </ul>
+    </li>
+
+    <li>编辑</li>
+
+
+  </ul>
 </body>
 
 </html>
