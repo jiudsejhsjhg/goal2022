@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+*{
+  xbackground-color: rgba(0, 0, 0, 0.08);
+  xbox-shadow: inset 0 0 1px red;
+}
+input:checked + .r > .m {
+  margin-left:50px;
+width: 50px;
+padding-left: 0;
+transition: width 3s, padding-lef 3s, margin 3s 0.08s;
+
+}
+input:checked + .r{
+  background-color: #30f34b;
+  border-color: #f1f1f1;
+  /* box-shadow: inset 1px 1px 25px gray; */
+
+}
+.r{
+  background-color: white;
+  width: 100px;
+  height: 50px;
+  display: inline-block;
+  border: 3px solid #cacaca;
+  border-radius: 40px;
+  cursor: pointer;
+  padding: 3px;
+  transition: 0.3s;
+}
+
+.m{
+  transition: width 3s 0.08s, padding-lef 3s, margin 3s 0.08s;
+  width: 40px;
+  padding-left: 10px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: bottom;
+  border-radius: 30px;
+background-color: white;
+box-shadow: 1px 2px 3px 3px gray;
+
+}
+
+  </style>
+</head>
+<body>
+  <label>
+    <input type="checkbox">
+    <span class="r">
+      <span class="m"></span>
+    </span>
+  </label>
+</body>
+</html>
