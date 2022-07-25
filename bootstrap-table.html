@@ -17,7 +17,7 @@
 .table{
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
   font-size: 15px;
   /* display: inline-table; */
   /* text-align: left; */
@@ -58,7 +58,7 @@ text-align: left;
 
 &.table-bordered{
   border: 10px solid red;
-th,td{
+table,th,td{
   border: 1px solid black;
 }
 }
@@ -77,8 +77,6 @@ th,td{
 
 tr > th:nth-child(2){
   background-color: #ececec;
-
-
 }
 td:nth-child(2){
     background-color: #ececec;
@@ -98,7 +96,7 @@ td:nth-child(2){
 
 <body>
 
-  <table class="table">
+  <table class="table table-striped-columns ">
     <thead>
       <tr>
         <th>#</th>
@@ -132,7 +130,7 @@ td:nth-child(2){
 
 
 
-  <table class="table table-sm table-hover">
+  <table class="table table-sm table-hover ">
     <thead>
       <tr>
         <th>#</th>
