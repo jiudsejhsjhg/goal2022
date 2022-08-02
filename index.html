@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小米商城网页</title>
+  <!-- <link rel="stylesheet" href="./iconfont/iconfont.css"> -->
+  <style type="text/less">
+    *{
+      xbackground-color: rgba(0, 0, 0, 0.08);
+      xbox-shadow: inset 0 0 1px red;
+    }
+
+
+    html{
+      scroll-behavior: smooth;
+      height: 100%;
+
+      /* 设置字号，字体  高度 滚动行为*/
+      font: 12px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+    }
+
+    /* 设置网页的在线字体图标 */
+    @font-face{
+      font-family: mifont;
+      src: url('mifont.woff');
+    }
+
+    body{
+      background-color: #e1e1e2;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      min-width: 900px;
+      padding: 0;
+      overflow: scroll;
+    }
+ul{
+  list-style: none;
+}
+
+a{
+  /* 设置超链接的字号颜色，去除下划线 */
+  text-decoration: none;
+color: #b0b0b0;
+}
+
+
+&.subject{
+  /* 设置包裹元素div的高度，宽度，背景颜色 */
+  width: 100%;
+  background-color: #333333;
+  color: #b0b0b0;
+  cursor: pointer;
+   .guidance{
+    /* 菜单链接的另外包裹标签的div  设置小米商城到智能生活的宽度 使内容居中*/
+    width: 1260px;
+    height: 40px;
+    margin: auto;
+  }
+  .ser{
+    /* 设置span“|” 菜单的分界线的大小颜色 */
+    margin: 0.2em;
+   color: #666;
+
+  }
+  a{
+    /* 菜单栏超链接字号的大小和行高 */
+    font-size: .6em;
+    line-height: 40px;
+    display: inline-block;
+  }
+  :hover{
+      color: #f0f0f0;
+/* 被hover时的高亮颜色 */
+    }
+
+}
+
+&.title{
+  /* 设置小米商城到select looation成为定位祖先，让下载app绝对定位于它 */
+  float: left;
+  position: relative;
+  .ya{
+    width: 125px;
+    height: 0;
+    /* 让图片定位于下载app */
+    position: absolute;
+    left: 540px;
+    /* 设置一个文字的行高，让图片右移至下载app的下方 */
+    line-height: 2em;
+    color: black;
+    /* 图片出现的速度 */
+    transition: height .4s;
+    z-index: 1000;
+    /* 将图片暂时隐藏起来，被hover时出现 */
+    overflow: hidden;
+    /* 让appp商城文字居中图片 */
+    text-align: center;
+    font-size:1.2em;
+  }
+  img{
+/* 设置图片的大小 */
+    display: block;
+    width: 100px;
+    margin: 10px;
+    margin-bottom: 5px;
+
+  }
+}
+
+ #ya{
+  /* 让 "下载app” 成为图片定位祖先， 让图片在hover时与文字互动产生动画效果*/
+  position: relative;
+ &:hover{
+    +.ya{
+      height: 150px;
+      transition: height .4s;
+/* 让下载app和图片进行互动出现 */
+      ::after{
+        /* 设置hover时三角箭头图片下的具体定位，大小 */
+  content: "▲";
+  /* ▲进行绝对定位 */
+  position: absolute;
+  color: red;
+  width: 20px;
+  left: 3em;
+  top: -.9em;
+  z-index: 1000;
+}
+    }
+
+  }
+}
+
+&.guidance1{
+   /* 购物车的大小及定位 */
+  height: 40px;
+width: 100px;
+font-size: 1.2em;
+position: relative;
+float:right;
+/* 让购物车成为定位祖先，向右浮动，设置高宽 */
+background-color: #424242;
+a{
+/* 菜单栏超链接字号的大小和行高 */
+font-size: .6em;
+line-height: 40px;
+display: inline-block;
+}
+
+}
+
+.ser1{
+  /* 绝对定位于外层的包裹块div */
+  position: absolute;
+  float:right;
+  width: 300px;
+  line-height: 100px;
+  text-align: center;
+left: -200px;
+height: 0;
+/* display: none; */
+overflow: hidden;
+transition: .6s;
+color: black;
+background-color: #ffff;
+box-shadow: 0px 0 1px 2px #f5f5f5;
+/* 购物车被hover时出现的文字样式 “购物车中还没有商品，赶紧选购吧！” */
+}
+
+&.guidance1:hover {
+  display: block;
+  color: orange;
+/* 购物车被hover的样式 */
+  background-color: #ffffff;
+  #ser1:hover{
+color: orange;
+transition: 1s;
+background-color: #f5f5f5;
+/* 购物车被hover的样式 */
+  + .ser1{
+    display: block;
+    height: 100px;
+    transition: .6s;
+  }
+  }
+
+}
+
+&.guidance2{
+  /* 让 “登录注册” 成为定位祖先，向右浮动 */
+  font-size: 1.3em;
+  width: 200px;
+  height: 50px;
+position: relative;
+float:right;
+.ser{
+    /* 设置span“|” 菜单的分界线的大小颜色 */
+    margin: 0.2em;
+    color: #b0b0b0;
+
+  }
+a{
+/* 菜单栏超链接字号的大小和行高 */
+font-size: .6em;
+line-height: 40px;
+display: inline-block;
+}
+}
+
+&em::before{
+  /* 购物车的图标 */
+  content: '\E60C';
+  font-family: mifont;
+  font-size: 15px;
+}
+
+
+/* 第二个菜单栏的包裹块，使用flex布局横向排列 设定行高 */
+&.nav-box{
+  height: 100px;
+  width: 1260px;
+  /* 设定宽度，居中 */
+  margin: auto;
+  display: flex;
+  line-height: 100px;
+  align-items: center;
+  /* 文字居中对齐 */
+
+  .logo{
+    /* logo的大小并内容居中 */
+    line-height: 60px;
+    margin-right: 150px;
+    img{
+      /* logo图片的大小 */
+      height: 60px;
+      width: 60px;
+    }
+  }
+  .nav-rowl{
+    /* 清除ul的默认样式，给父元素设置flex布局，
+    让菜单横向排列，设置光标的点击样式 */
+    list-style: none;
+display: flex;
+cursor: pointer;
+> li{
+/* 设置菜单栏的文字大小，行高 */
+  font-size: 14px;
+  padding: 0 10px;
+  height: 100px;
+line-height:100px;
+.product{
+  /* 菜单栏的子菜单的hover时间，将子菜单隐藏 */
+  background-color: #fff;
+    list-style: none;
+   height: 0;
+   z-index: 555;
+   transition: .6s height, 0s 1s z-index;
+   overflow: hidden;
+   position: absolute;
+width: 100%;
+left: 0;
+font-size: 12px;
+.nav-ul{
+  /* 清除子菜单的默认样式，设置子菜单的宽度横向排列 */
+  list-style: none;
+  width: 1260px;
+  display: flex;
+  margin: auto;
+  li{
+    /* 子菜单的图片模块的分割，大小 */
+    width: calc( 1260px / 6);
+    margin: auto;
+    width: 150px;
+    height: 230px;
+  img{
+    width: 120px;
+    margin-top: 20px;
+    /* 图片的大小 */
+  }
+  span{
+    /* 图片下列的文字的行高，文字居中 */
+font-size: 15px;
+    display: block;
+color: #333;
+margin-top: -40px;
+line-height: 30px;
+align-content: center;
+margin-left: 10px;
+}
+em{
+
+    /* 图片下列的文字的行高，文字居中 */
+  font-size: 15px;
+  display: block;
+  line-height:30px;
+  color: #ff6700;
+  align-content: center;
+  margin-top: -10px;
+  margin-left: 30px;
+}
+}
+}
+}
+/* 子菜单被hover时的层级，hover的时长 */
+&:hover .product{
+  z-index: 8888;
+  transition: 1s height, 0s z-index;
+  border-top: 1px solid gainsboro;
+  box-shadow: 2px 1px 1px gainsboro;
+
+}
+}
+
+/* li里所有的子菜单被hover时的层级，hover的时长 */
+&:hover > li .product{
+height: 230px;
+display: flex;
+border-top: 1px solid gainsboro;
+transition: 1s height, 0s z-index;
+}
+}
+}
+
+/* 服务中心和社区的菜单栏使用flex横向排列，清除默认样式 */
+.nav-rowl1{
+  list-style: none;
+  display: flex;
+  font-size: 1.2em;
+  cursor: pointer;
+  .a{
+margin-left: -30px;
+
+}
+.b{
+  margin-left: 10px;
+}
+}
+
+
+.searc-form{
+  display: flex;
+  margin-left: auto;
+/* 搜索框的横向排列，右边对齐 */
+  &:hover{
+    /* 被hover时的边框颜色 */
+    input,button{
+      border-color: #b0b0b0;
+    }
+  }
+  /*光标点击搜索框时的边框颜色  */
+  &:focus-within{
+    input,button{
+      border-color: #ff6700;
+/* 光标在focus点击里面是出现高量 */
+    }
+  }
+
+  /* 搜索框的大小高度， 设置圆角半径为none ，告诉浏览器的最大宽度 */
+  input{
+    width: 245px;
+    height: 50px;
+outline: none;
+    border: 1px solid #e0e0e0;
+    box-sizing:border-box;
+border-radius: none;
+font-size: 14px;
+  }
+  /* 按钮的大小 横向排列对齐搜索框 */
+  button{
+    width: 50px;
+    height: 50px;
+    margin-left: -2px;
+    border: 1px solid #e0e0e0;
+    font-size: 2em;
+    display: flex;
+    &:hover{
+      /* 被hover时的边框、背景、字体颜色 */
+  background-color: #ff6700;
+  border-color: #ff6700;
+  color: #fff;
+  cursor: pointer;
+}
+  }
+}
+
+
+
+&.fixed-sidebar{
+  /* 侧边人工导航栏，根据视口定位，设置达到最小改变自生的大小 */
+ position: fixed;
+ right: 0;
+  bottom: 70px;
+  @media(max-width: 1260px){
+    left: 50%;
+    margin-left: calc(1260px / 2);
+    right: auto;
+  }
+  ul{
+    li{
+height: 90px;
+.icon-text{
+  @media(max-width: 1260px){
+    display: none;
+  }
+}
+/* 设置侧边人工导航栏 */
+    .icon{
+    display: block;
+   font-size: 3em;
+     @media(max-width: 1260px){
+     font-size: 1.2em
+}
+}
+    }
+  }
+}
+.iconfont::before{
+  content: "🏊‍♂️";
+}
+
+
+/* 左侧菜单栏和轮播图，成为定位祖先 */
+&.hero{
+  background-color: #222223;
+  height: 450px;
+  width: 1260px;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  ul.menu{
+    /* 左侧菜单定位，设置宽度高度等样式 */
+    background-color: #252526;
+    color: #fff;
+    font-size: 1.2em;
+    /* left: -15px; */
+    position: absolute;
+   height: 100%;
+  box-sizing: dorder-box;
+padding: 0px;
+width: 229px;
+z-index: 99;
+  > li {
+    /* 菜单栏没行的宽度高度 */
+    height: 42px;
+    line-height: 42px;
+    padding-left: 30px;
+    padding-right: 20px;
+    &::after{
+      /* 右侧的箭头，向右浮动 */
+      content: ">";
+    float: right;
+    font-size: 1.5em;
+    }
+
+    &:hover .menu-ul{
+display: block;
+/* hover是子菜单出现 */
+    }
+    .menu-ul{
+/* 子菜单定位于主菜单，隐藏，hover时再出现 */
+      color: #333333;
+      display: none;
+      list-style: none;
+      position: absolute;
+      left: 100%;
+      height: 460px;
+      top: 0;
+/* 背景颜色，宽度等 */
+      background-color: #fff;
+img{
+  /* 子菜单里的图片大小 */
+  width: 50px;
+  height: 50px;
+  line-height:50px;
+  margin-bottom: -10px;
+}
+/* 子菜单里的文字，每层分割布局 */
+       li{
+        line-height: 50px;
+        align-content: center;
+        height: calc(460px / 6);
+        width: 248px;
+        &:nth-child(n + 7){
+          margin-left: 248px;
+        }
+        &:nth-child(n + 13){
+          margin-left: 496px;
+        }
+        &:nth-child(n + 19) {
+          margin-left: 744px;
+        }
+        &:nth-child(6n + 7){
+          margin-top: -460px;
+        }
+       }
+    }
+  }
+  }
+}
+
+
+/* 轮播图  位置定位于图片，设置摆放图片位子 */
+  &.slider {
+      position: absolute;
+width: 1030px;
+margin-left: 229px;
+      input {
+        /* 按钮成为定位祖先，将位置隐藏，lable定位于它 */
+           position: relative;
+           top: 300px;
+           z-index: 8;
+           display: none;
+         }
+
+         /* 轮播图的图片位置成为定位祖先，设置图片的大小 */
+         .imgs {
+      position: relative;
+      width: 100%;
+      display: inline-block;
+      height: 464px;
+margin-right: 220px;
+left: -1030px;
+box-sizing: border-box;
+
+
+/* 每张图片定位于包含块，占据包含块所有位置 */
+      img {
+        position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 100%;
+            transition: 1s;
+            box-sizing: border-box;
+          }
+
+    }
+
+    /* 切换图片的按钮的包含快，定位input，实现点击切换图片 让层级比图片高，将位置放到右下角 */
+    .indicators {
+      position: absolute;
+      bottom: 10px;
+      left: 900px;
+      z-index: 8;
+    box-shadow: 0px 1px  1px whitesmoke;
+      font-size: 0;
+      background-color: transparent;
+      z-index: 8888;
+    }
+    label {
+      /* 按钮的大小，横向排列  */
+      margin: 3px;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: transparent;
+      cursor: pointer;
+      &:hover{
+/* hover时产生的高量 */
+         background-color: aliceblue;
+       }
+    }
+    }
+
+    input:nth-child(1):checked ~ .imgs img:nth-child(1),
+    input:nth-child(2):checked ~ .imgs img:nth-child(2),
+    input:nth-child(3):checked ~ .imgs img:nth-child(3),
+    input:nth-child(4):checked ~ .imgs img:nth-child(4) {
+      left: 1030px;
+      z-index: 888;
+      /* 设置图片让图片可以实现切换 */
+    }
+    input:nth-child(1):checked ~ .indicators label:nth-child(1),
+    input:nth-child(2):checked ~ .indicators label:nth-child(2),
+    input:nth-child(3):checked ~ .indicators label:nth-child(3),
+    input:nth-child(4):checked ~ .indicators label:nth-child(4){
+    background-color: aliceblue;
+    z-index: 8888;
+
+    }
+
+&.nav-suor{
+  width: 100%;
+  height: 100%;
+.box-ul{
+width: 230px;
+height: 50px;
+position: relative;
+border-collapse: collapse;
+top:475px;
+border-spacing: 0;
+border-spacing: 2px;
+td{
+  cursor: pointer;
+  color: #9f9d9b;
+  text-align: center;
+width: 70px;
+height: 83px;
+border: 3px solid gray;
+background-color: #5f5750;
+font-size: 12px;
+border-color: #59514b;
+img{
+  padding: 0px;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+
+
+
+}
+    }
+}
+
+.module{
+position: relative;
+width: 1260px;
+height: 210px;
+top: 290px;
+
+img{
+  margin: 6px;
+  width: 330px;
+  height: 180px;
+  float: right;
+left: 260px;
+cursor: pointer;
+transition: .3s;
+&:hover{
+top: 2px;
+ box-shadow: 1px 1px 20px #b2b2b2b2;
+}
+}
+}
+}
+
+
+.nav-munu{
+  background-color: #e1e1e2;
+width: 100%;
+  /* height: 150px; */
+  position: relative;
+  top: 260px;
+   .ser{
+    width: 1260px;
+    height: 150px;
+   }
+}
+
+nav{
+  h2{
+    font-size: 1.3em;
+    display: flex;
+    justify-content: space-between;
+
+    .ver:hover{
+      color: #ff6700;
+      transition: .6s;
+    }
+  }
+.redmi{
+
+  position: relative;
+  top: 300px;
+  margin:0 auto;
+.xiao{
+  width: 1260px;
+  height: 100%;
+  .fold{
+    width: 230px;
+    height: 620px;
+    /* float: left; */
+margin-left: -30px;
+img{
+  width: 230px;
+  height: 620px;
+  padding: 0;
+}
+  }
+  li{
+    background-color: #ffffff;
+    width: 235px;
+    height: 305px;
+    margin: 10px;
+float: left;
+img{
+padding: 20px;
+  width: 200px;
+  height: 150px;
+  vertical-align: middle;
+  margin: 0 auto;
+}
+h4{
+  text-align: center;
+
+
+}
+.srev{
+  text-align: center;
+margin: 0 50px 0px;
+color: #b0b0b0;
+
+}
+.srevr{
+  text-align: center;
+  margin: 90px;
+  color: #ff6700;
+}
+  }
+}
+}
+}
+
+
+</style>
+</head>
+
+<body>
+  <header>
+    <div class="subject">
+      <div class="guidance">
+        <div class="title">
+          <a href="https://mymoonddd.github.io/miao/mi/index.html#">小米商城</a>
+          <span class="ser">|</span>
+          <a href="#">MLUL</a>
+          <span class="ser">|</span>
+          <a href="#">LOT</a>
+          <span class="ser">|</span>
+          <a href="#">云服务</a>
+          <span class="ser">|</span>
+          <a href="#">天星数科</a>
+          <span class="ser">|</span>
+          <a href="#">有品</a>
+          <span class="ser">|</span>
+          <a href="#">小爱开放平台</a>
+          <span class="ser">|</span>
+          <a href="#">企业团购</a>
+          <span class="ser">|</span>
+          <a href="#">资质证照</a>
+          <span class="ser">|</span>
+          <a href="#">协议规则</a>
+          <span class="ser">|</span>
+          <a href="#" id="ya">下载app</a>
+          <div class="ya">
+            <img src="./图片/小米商城图片/download.png" alt="">
+            <span>小米商城APP</span>
+          </div>
+          <span class="ser">|</span>
+          <a href="#">智能生活</a>
+          <span class="ser">|</span>
+          <a href="#">Select Looation</a>
+
+        </div>
+        <div class="guidance1">
+
+          <a href="#" id="ser1"> <em></em> 购物车<span> </span> (0)</a>
+          <div class="ser1">购物车中还没有商品，赶紧选购吧！</div>
+
+        </div>
+        <div class="guidance2">
+          <a href="#">登录</a>
+          <span class="ser">|</span>
+          <a href="#">注册</a>
+          <span class="ser">|</span>
+          <a href="#">消息通知</a>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-box">
+
+        <a href="#" class="logo">
+          <img class="logo1" src="./图片/小米商城图片/logo-mi2.png" alt="">
+        </a>
+
+        <ul class="nav-rowl">
+          <li>Xiaomi手机
+            <div class="product">
+              <ul class="nav-ul">
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+              </ul>
+
+
+            </div>
+          </li>
+          <li>Redmi手机
+            <div class="product">
+              <ul class="nav-ul">
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+              </ul>
+
+
+            </div>
+          </li>
+          <li>电视
+            <div class="product">
+
+              <ul class="nav-ul">
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>笔记本
+            <div class="product">
+
+              <ul class="nav-ul">
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>平板
+            <div class="product">
+              <ul class="nav-ul">
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/xiaomin.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+              </ul>
+
+            </div>
+          </li>
+          <li>家电
+            <div class="product">
+              <ul class="nav-ul">
+                <li>
+                  <img class="der" src="./图片/小米商城图片/0bf0ba35dc3ad57115c59f0ebde0fd1d.jpeg" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/0bf0ba35dc3ad57115c59f0ebde0fd1d.jpeg" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/0bf0ba35dc3ad57115c59f0ebde0fd1d.jpeg" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/0bf0ba35dc3ad57115c59f0ebde0fd1d.jpeg" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/0bf0ba35dc3ad57115c59f0ebde0fd1d.jpeg" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+
+              </ul>
+
+            </div>
+          </li>
+          <li>路由器
+            <div class="product">
+              <ul class="nav-ul">
+                <li>
+                  <img class="der" src="./图片/小米商城图片/08623078b19af34e76eff407c418d384.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/08623078b19af34e76eff407c418d384.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/08623078b19af34e76eff407c418d384.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/08623078b19af34e76eff407c418d384.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+                <li>
+                  <img class="der" src="./图片/小米商城图片/08623078b19af34e76eff407c418d384.png" alt="">
+                  <span>Xiaomi手机 Civi</span><em>2990起</em>
+                </li>
+              </ul>
+
+            </div>
+          </li>
+        </ul>
+        <ul class="nav-rowl1">
+          <li class="a">服务中心</li>
+          <li class="b">社区</li>
+        </ul>
+        <form class="searc-form" action="">
+          <input type="text">
+          <button><em></em></button>
+
+        </form>
+      </div>
+
+      </div>
+
+    </nav>
+
+
+    <div class="fixed-sidebar">
+      <ul>
+        <li><em class="iconfont icon"></em>
+          <span class="icon-text">手机app</span>
+        </li>
+        <li><em class="iconfont icon"></em>
+          <span class="icon-text">个人中心</span>
+        </li>
+        <li><em class="iconfont icon"></em>
+          <span class="icon-text">售后服务</span>
+        </li>
+        <li> <em class="iconfont icon"></em>
+          <span class="icon-text">人工客服</span>
+        </li>
+        <li> <em class="iconfont icon"></em>
+          <span class="icon-text">购物车</span>
+        </li>
+        <li><em class="iconfont icon"></em>
+          <span class="icon-text">回到顶部</span>
+        </li>
+      </ul>
+
+    </div>
+    <div class="hero">
+      <ul class="menu">
+        <li> 手机
+          <ul class="menu-ul">
+
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt="">Xiaomi 12S</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12S Ultra</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12S Pro</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12 Pro 天璣版</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Note 11T Pro+</li>
+            <li> <img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt="">Xiaomi 12S</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12S Ultra</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12S Pro</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12 Pro 天璣版</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Note 11T Pro+ Xiaomi 12S</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12S Ultra</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12S Pro</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12 Pro 天璣版</li>
+            <li> <img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt="">Note 11T Pro+</li>
+          </ul>
+        </li>
+        <li> 电视
+          <ul class="menu-ul">
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> Redmi X65 2022款</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">小米拍拍4K高清投屏器</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">Redmi X55 2022款</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">小米电视6 55” OLED</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">小米电视6 65” OLED</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> 小米电视 大师 77”</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> Redmi X65 2022款</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> 小米拍拍4K高清投屏器</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">Redmi X55 2022款</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">小米电视6 55” OLED</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> 小米电视6 65” OLED</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">小米电视 大师 77”</li>
+          </ul>
+        </li>
+        <li> 笔记本 平板
+          <ul class="menu-ul">
+
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt="">RedmiBook Pro14 2022 </li>
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt=""> RedmiBook Pro15 2022 </li>
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt=""> RedmiBook Pro 14 增强版</li>
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt="">小米笔记本 Pro 14 锐龙版 </li>
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt="">RedmiBook Pro 15 增强版RedmiBook Pro14
+              2022 </li>
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt="">RedmiBook Pro15 2022</li>
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt=""> 小米笔记本 Pro 14 锐龙版</li>
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt="">小米笔记本 Pro 14 锐龙版</li>
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt="">RedmiBook Pro 15 增强版</li>
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt=""> 小米笔记本 Pro 14 锐龙</li>
+            <li> <img src="./图片/小米商城图片/22ae4c69db55780b34e10bbab5091f8c.png" alt=""> 小米笔记本 Pro 14 锐龙</li>
+
+
+          </ul>
+
+        </li>
+        <li> 家电
+          <ul class="menu-ul">
+            <li> <img src="./图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt="">RedmiBook Pro14 2022 </li>
+            <li> <img src="./图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt=""> RedmiBook Pro15 2022 </li>
+            <li> <img src="./图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt=""> RedmiBook Pro 14 增强版</li>
+            <li> <img src="./图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt="">小米笔记本 Pro 14 锐龙版 </li>
+            <li> <img src="./图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt="">RedmiBook Pro 15 增强版RedmiBook Pr
+            </li>
+            <li> <img src="./图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt="">RedmiBook Pro15 2022</li>
+            <li> <img src="./图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt=""> 小米笔记本 Pro 14 锐龙版</li>
+            <li> <img src="./图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt="">小米笔记本 Pro 14 锐龙版</li>
+            <li> <img src="/图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt="">RedmiBook Pro 15 增强版</li>
+            <li> <img src="./图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt=""> 小米笔记本 Pro 14 锐龙</li>
+            <li> <img src="./图片/小米商城图片/380a001d0c536ad63a97c6abbf07f7b4.png" alt=""> 小米笔记本 Pro 14 锐龙</li>
+          </ul>
+        </li>
+        <li> 出行 穿戴</li>
+        <li> 智能 路由器</li>
+        <li> 电源 配件</li>
+        <li> 健康 儿童 </li>
+        <li> 耳机 音箱</li>
+        <li> 生活 箱包 </li>
+      </ul>
+
+
+      <div class="slider">
+        <input type="radio" id="r-1" name="radio1">
+        <input type="radio" id="r-2" name="radio1">
+        <input type="radio" id="r-3" name="radio1">
+        <input type="radio" id="r-4" name="radio1">
+        <div class="imgs">
+          <img src="./图片/小米商城图片/lunbaotu.jpeg" alt="">
+          <img src="./图片/小米商城图片/lunbaotu1.jpeg" alt="">
+          <img src="./图片/小米商城图片/05b2e16c007ca8bc2ae6e3541ad910df.jpeg" alt="">
+          <img src="./图片/小米商城图片/1b948da8a19fe290d46ae532b54afe7b.jpeg" alt="">
+        </div>
+        <div class="indicators">
+          <label for="r-1"></label>
+          <label for="r-2"></label>
+          <label for="r-3"></label>
+          <label for="r-4"></label>
+
+        </div>
+
+      </div>
+      <div class="nav-suor">
+        <table class="box-ul">
+          <tbody>
+            <tr>
+              <td> <img src="./图片/小米商城图片/cailan.png" alt="">
+                <p>保障服务</p>
+              </td>
+              <td> <img src="./图片/小米商城图片/cailan.png" alt="">
+                <p>企业团购</p>
+              </td>
+              <td> <img src="./图片/小米商城图片/cailan.png" alt="">
+                <p>F码通道</p>
+              </td>
+            </tr>
+            <tr>
+              <td> <img src="./图片/小米商城图片/cailan.png" alt="">
+                <p>米粉卡</p>
+              </td>
+              <td> <img src="./图片/小米商城图片/cailan.png" alt="">
+                <p>以旧换新</p>
+              </td>
+              <td> <img src="./图片/小米商城图片/cailan.png" alt="">
+                <p>花费充值</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="module">
+          <img src="./图片/小米商城图片/shou.jpeg" alt="">
+          <img src="./图片/小米商城图片/shou.jpeg" alt="">
+          <img src="./图片/小米商城图片/shou.jpeg" alt="">
+        </div>
+      </div>
+
+      <nav>
+        <div class="nav-munu">
+          <img class="ser" src="./图片/小米商城图片/小米的横图.webp" alt="">
+        </div>
+
+
+        <div class="redmi">
+<h2>手机 <a class="ver" href="#">查看更多<em></em></a> </h2>
+          <ul class="xiao">
+            <li class="fold">
+              <img src="./图片/小米商城图片/13ce3.webp" alt="">
+            </li>
+            <li>
+              <img src="./图片/小米商城图片/123.png" alt="">
+              <h4>Redmi Note 11 Pro系列</h4>
+              <span class="srev">Redmi Note 11 Pro系列</span><span class="srevr">1799元起</span>
+            </li>
+            <li>
+              <img src="./图片/小米商城图片/123.png" alt="">
+              <h4>Redmi Note 11 Pro系列</h4>
+              <span class="srev">Redmi Note 11 Pro系列</span><span class="srevr">1799元起</span>
+            </li>
+            <li>
+              <img src="./图片/小米商城图片/123.png" alt="">
+              <h4>Redmi Note 11 Pro系列</h4>
+              <span class="srev">Redmi Note 11 Pro系列</span><span class="srevr">1799元起</span>
+            </li>
+            <li>
+              <img src="./图片/小米商城图片/123.png" alt="">
+              <h4>Redmi Note 11 Pro系列</h4>
+              <span class="srev">Redmi Note 11 Pro系列</span><span class="srevr">1799元起</span>
+            </li>
+            <li>
+              <img src="./图片/小米商城图片/123.png" alt="">
+              <h4>Redmi Note 11 Pro系列</h4>
+              <span class="srev">Redmi Note 11 Pro系列</span><span class="srevr">1799元起</span>
+            </li>
+            <li>
+              <img src="./图片/小米商城图片/123.png" alt="">
+              <h4>Redmi Note 11 Pro系列</h4>
+              <span class="srev">Redmi Note 11 Pro系列</span><span class="srevr">1799元起</span>
+            </li>
+            <li>
+              <img src="./图片/小米商城图片/123.png" alt="">
+              <h4>Redmi Note 11 Pro系列</h4>
+              <span class="srev">Redmi Note 11 Pro系列</span><span class="srevr">1799元起</span>
+            </li>
+            <li>
+              <img src="./图片/小米商城图片/123.png" alt="">
+              <h4>Redmi Note 11 Pro系列</h4>
+              <span class="srev">Redmi Note 11 Pro系列</span><span class="srevr">1799元起</span>
+            </li>
+          </ul>
+      </nav>
+<div class="por">
+<ul>
+  <li class="color">智能穿戴</li>
+  <li class="colorv">热门
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </li>
+  <li class="colort">穿戴</li>
+</ul>
+
+</div>
+
+
+
+  </header>
+</body>
+<script src="less.js"></script>
+
+</html>
