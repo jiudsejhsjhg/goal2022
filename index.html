@@ -9,8 +9,8 @@
   <!-- <link rel="stylesheet" href="./iconfont/iconfont.css"> -->
   <style type="text/less">
     *{
-      xbackground-color: rgba(0, 0, 0, 0.08);
-      xbox-shadow: inset 0 0 1px red;
+      background-color: rgba(0, 0, 0, 0.08);
+      box-shadow: inset 0 0 1px red;
     }
 
 
@@ -255,7 +255,6 @@ line-height:100px;
 .product{
   /* 菜单栏的子菜单的hover时间，将子菜单隐藏 */
   background-color: #fff;
-    list-style: none;
    height: 0;
    z-index: 555;
    transition: .6s height, 0s 1s z-index;
@@ -266,7 +265,6 @@ left: 0;
 font-size: 12px;
 .nav-ul{
   /* 清除子菜单的默认样式，设置子菜单的宽度横向排列 */
-  list-style: none;
   width: 1260px;
   display: flex;
   margin: auto;
@@ -582,18 +580,21 @@ box-sizing: border-box;
 
     }
 
+/* 设置下栏长方形的小菜单栏和三张图的包含块 */
 &.nav-suor{
   width: 100%;
   height: 100%;
+  /* 长方形的菜单栏，定位 */
 .box-ul{
 width: 230px;
 height: 50px;
 position: relative;
+/* margin合并 */
 border-collapse: collapse;
 top:475px;
-border-spacing: 0;
-border-spacing: 2px;
+cursor: pointer;
 td{
+/* “保障服务” 小菜单栏的外形样式 */
   cursor: pointer;
   color: #9f9d9b;
   text-align: center;
@@ -603,6 +604,8 @@ border: 3px solid gray;
 background-color: #5f5750;
 font-size: 12px;
 border-color: #59514b;
+
+/* “小菜单栏的图标” */
 img{
   padding: 0px;
   width: 30px;
@@ -612,16 +615,22 @@ img{
 
 
 }
-    }
 }
+:hover p {
+/* 因为最开始没有定位到包含块，所以没办法hover */
+ color: whitesmoke;
+}
+}
+
 
 .module{
 position: relative;
 width: 1260px;
 height: 210px;
 top: 290px;
-
+/* 右侧的横向图片展示图位置 */
 img{
+/* 图片的摆放大小 */
   margin: 6px;
   width: 330px;
   height: 180px;
@@ -637,7 +646,7 @@ top: 2px;
 }
 }
 
-
+/* 下侧的横向展示图位置 */
 .nav-munu{
   background-color: #e1e1e2;
 width: 100%;
@@ -645,6 +654,7 @@ width: 100%;
   position: relative;
   top: 260px;
    .ser{
+    /* 图片的大小 */
     width: 1260px;
     height: 150px;
    }
@@ -652,41 +662,48 @@ width: 100%;
 
 nav{
   h2{
+
     font-size: 1.3em;
     display: flex;
     justify-content: space-between;
-
+/* 第一个图片菜单栏的标题文字样式 */
     .ver:hover{
       color: #ff6700;
       transition: .6s;
     }
   }
 .redmi{
-
+/* 图片菜单栏的位子占据 */
   position: relative;
   top: 300px;
   margin:0 auto;
+  cursor: pointer;
 .xiao{
+  /* 占据中心位置居中 */
   width: 1260px;
   height: 100%;
   .fold{
+    /* 设置左侧图片菜单的占据位置 */
     width: 230px;
     height: 620px;
-    /* float: left; */
 margin-left: -30px;
 img{
+  /* 左侧的图片大小 */
   width: 230px;
   height: 620px;
   padding: 0;
+
 }
   }
   li{
+    /* 设置li的占据位置 */
     background-color: #ffffff;
     width: 235px;
-    height: 305px;
+    height: 300px;
     margin: 10px;
 float: left;
 img{
+  /* 右侧的图片的大小 */
 padding: 20px;
   width: 200px;
   height: 150px;
@@ -695,24 +712,135 @@ padding: 20px;
 }
 h4{
   text-align: center;
-
+/* 让第一行文字居中 */
 
 }
 .srev{
   text-align: center;
 margin: 0 50px 0px;
 color: #b0b0b0;
-
+/* 第二行文字的居中，字号 */
 }
 .srevr{
   text-align: center;
   margin: 90px;
   color: #ff6700;
+  /* 底部的文字居中颜色 */
 }
   }
 }
 }
 }
+
+&.bin-js{
+  margin-left: 15px;
+  display: inline-block;
+  height: 0;
+  position: relative;
+  top: 350px;
+  font-size: 1.2em;
+
+  .box-roder{
+    float: left;
+display: inline-block;
+
+    .bin2{
+
+      transition: 0s 9999999s;
+margin-bottom: 10px;
+position: relative;
+margin-left: 1080px;
+
+      .bing{
+
+width: 1260px;
+        margin-left: -70px;
+        position: absolute;
+        div{
+          img{
+            width: 150px;
+           margin: 40px;
+          }
+          background-color: #fff;
+          margin: 11px;
+        float: left;
+  width: 230px;
+  height: 300px;
+  &.box-module{
+
+    width: 230px;
+    height: 620px;
+    img{
+      width: 230px;
+      height: 620px;
+      margin: 0;
+    }
+  }
+        }
+      }
+    }
+  }
+  .left{
+    display: inline-block;
+    float: left;
+
+  }
+
+  .box-un{
+    display: inline-block;
+    float: right;
+
+    .bin3{
+      width: 50px;
+      position: absolute;
+height: 20px;
+margin-left: 50px;
+display: inline-block;
+
+      .vert{
+    .box-module{
+
+img{
+height: 620px;
+  width: 230px;
+  margin: 0;
+}
+      width: 230px;
+      height: 620px;
+      margin-left: -1220px;
+    }
+    div{
+      display: inline-block;
+      background-color: #fff;
+    height: 0;
+      margin-top: 15px;
+      width: 230px;
+      margin-left: -966px;
+      float: left;
+      img{
+        width: 150px;
+        margin: 40px;
+      }
+
+}
+.box-module-1{
+margin-left: -713px;
+  float: left;
+}
+  }
+    }
+  }
+}
+
+.bin3:hover > div{
+  display: block;
+  height: 300px;
+  width: 230px;
+}
+
+
+
+
 
 
 </style>
@@ -1041,6 +1169,15 @@ color: #b0b0b0;
             <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12S Pro</li>
             <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12 Pro 天璣版</li>
             <li> <img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt="">Note 11T Pro+</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12S Pro</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12 Pro 天璣版</li>
+            <li> <img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt="">Note 11T Pro+</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12S Pro</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12 Pro 天璣版</li>
+            <li> <img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt="">Note 11T Pro+</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12S Pro</li>
+            <li><img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt=""> Xiaomi 12 Pro 天璣版</li>
+            <li> <img src="./图片/小米商城图片/21c3ec8638dd75f5c54f1a69864a1cc9.jpeg" alt="">Note 11T Pro+</li>
           </ul>
         </li>
         <li> 电视
@@ -1053,6 +1190,14 @@ color: #b0b0b0;
             <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> 小米电视 大师 77”</li>
             <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> Redmi X65 2022款</li>
             <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> 小米拍拍4K高清投屏器</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">Redmi X55 2022款</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">小米电视6 55” OLED</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> 小米电视6 65” OLED</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">小米电视 大师 77”</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">Redmi X55 2022款</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">小米电视6 55” OLED</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> 小米电视6 65” OLED</li>
+            <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">小米电视 大师 77”</li>
             <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">Redmi X55 2022款</li>
             <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt="">小米电视6 55” OLED</li>
             <li> <img src="./图片/小米商城图片/0eb7e33b11443f6927e2035eca7c3d9e.png" alt=""> 小米电视6 65” OLED</li>
@@ -1165,7 +1310,7 @@ color: #b0b0b0;
 
 
         <div class="redmi">
-<h2>手机 <a class="ver" href="#">查看更多<em></em></a> </h2>
+          <h2>手机 <a class="ver" href="#">查看更多<em></em></a> </h2>
           <ul class="xiao">
             <li class="fold">
               <img src="./图片/小米商城图片/13ce3.webp" alt="">
@@ -1211,21 +1356,66 @@ color: #b0b0b0;
               <span class="srev">Redmi Note 11 Pro系列</span><span class="srevr">1799元起</span>
             </li>
           </ul>
-      </nav>
-<div class="por">
-<ul>
-  <li class="color">智能穿戴</li>
-  <li class="colorv">热门
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-    </ul>
-  </li>
-  <li class="colort">穿戴</li>
-</ul>
+        </div>
 
-</div>
+        <div class="bin-js ">
+          <div class="left"><span>智能穿戴</span></div>
+
+          <div class="box-roder box-box">
+            <span class="bin2 san">热门
+              <div class="bing">
+                <div class="box-module">
+                  <img src="./图片/小米商城图片/61072.webp" alt="">
+                </div>
+                <div>
+                  <img src="./图片/小米商城图片/fefe.png" alt="">
+                </div>
+                <div>
+                  <img src="./图片/小米商城图片/glorjg.png" alt="">
+                </div>
+                <div>
+                  <img src="./图片/小米商城图片/f5a97ad8d7dd6c5ce0122f9dd8dd0e4e.png" alt="">
+                </div>
+                <div>
+                  <img src="./图片/小米商城图片/f5a97ad8d7dd6c5ce0122f9dd8dd0e4e.png" alt="">
+                </div>
+                <div>
+                  <img src="./图片/小米商城图片/1234456.jpeg" alt="">
+                </div>
+                <div>
+                  <img src="./图片/小米商城图片/f5a97ad8d7dd6c5ce0122f9dd8dd0e4e.png" alt="">
+                </div>
+                <div>
+                  <img src="./图片/小米商城图片/f5a97ad8d7dd6c5ce0122f9dd8dd0e4e.png" alt="">
+                </div>
+                <div>
+                  <img src="./图片/小米商城图片/5ea8cb5505802096e0fcffd2b5ac01a1.png" alt="">
+                </div>
+
+
+              </div>
+            </span>
+          </div>
+
+          <div class="box-un box-box">
+
+            <span class="bin3 san">穿戴
+              <div class="vert bing">
+                <div class="box-module">
+                  <img src="./图片/小米商城图片/61072.webp" alt="">
+                </div>
+                <div>
+                  <img src="./图片/小米商城图片/08623078b19af34e76eff407c418d384.png" alt="">
+                </div>
+                <div class="box-module-1">
+                  <img src="./图片/小米商城图片/" alt="">
+                </div>
+              </div>
+
+            </span>
+          </div>
+
+        </div>
 
 
 
