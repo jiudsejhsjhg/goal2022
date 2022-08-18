@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>画图</title>
@@ -9,8 +10,10 @@
       display: block;
       margin: auto;
     }
+
   </style>
 </head>
+
 <body>
   <canvas width="500" height="400"></canvas>
 </body>
@@ -63,33 +66,83 @@
   // 不可更改上面的代码
   // 你的代码写在这里
   // YOUR CODE GOES BELOW
+  // * 在 坐标 (42, 42) 画出一个点
+  dot(42, 43, 'red')
 
-const line = e => {
-  for (var i = 0 ; i < e ; i++) {
-dot (42 + i , 45);
-
+  //     * 画一条实线
+  for (var x = 10; x < 300; x++) {
+    dot(x, 20, 'purple')
   }
+  //     * 画一条一个实点一个空点的虚线
+  for (var x = 10; x < 300; x += 2) {
+    dot(x, 30, 'black')
+  }
+  //     * 画一条两个实点两个空点的虚线
+  for (var x = 10 ; x < 400 ; x+= 4) {
+    dot (x + 1, 40 , 'violet')
+    dot (x + 2 , 40 , 'viole')
+  }
+  //     * 画一条三个实点两个空点的虚线
+for (var x = 10 ; x < 200 ; x++) {
+if (x % 5 < 3){
+  dot (x , 50 , 'purple')
+}
+}
+  // for (var x = 10 ; x < 200 ; x+= 5) {
+  //   dot (x + 1, 50 , 'purple')
+  //   dot (x + 2, 50 , 'purple')
+  //   dot (x + 3, 50 , 'purple')
+  // }
+
+
+  //     * 画一条45度的斜线
+for (var x = 0 , y = 0 ; x < 200 ; x++ , y++) {
+  dot (x ,y, 'green')
 }
 
 
-
-
-const dottedLine2_2 = e => {
-  for (var i = 1 ; i < e ; i++){
-    dot (42 + i , 47);
-    dot (43 + i , 47);
-    i += 2
+  //     * 画一条30度的斜线（与x轴或y轴的夹角呈30度）
+  for (var x = 50 ; x < 300 ; x++) {
+    var y = x * Math.sqrt(3) / 3
+    dot (x , y , 'black')
   }
+  //     * 画一条跨越画布左上角和右下角的对角线
+
+for (var x = 0 ; x < 500 ; x++) {
+  var y = x * 0.8
+  dot (x , y , 'pink')
 }
 
-const dottedLine3_2 = e => {
-      for (let i = 0; i < e; i++) {
-        dot(42 + i, 49);
-        dot(43 + i, 49);
-        dot(44 + i, 49);
-        i += 5;
-      }
-    };
+// var ystep = 0.7777
+// var y = 0
+// for (var x = 0 ; x < 100 ; x++) {
+//   dot (x + 100, y + 200 , 'magenta')
+//   y += ystep
+// }
+
+
+  //     * 画一个空心矩形
+  //     * 画一个实心矩形
+  //     * 画两个个空心的圆，居中：
+  //       * 一个半径为50像素
+  //       * 一个半径为200像素
+  //     * 画一个实心的圆，半径至少为100像素
+  //     * 画一个【大小合适】的sin(x)的图像
+
+  //     * 画出rgb色彩空间的某一面（尺寸要大于100x100）
+  //        'rgb(255,255,0)'
+  //        '#ff00ff'
+  //       如果做出上一题后，尝试将其每个点的坐标乘以一个矩阵（如(2,0,0,2)或(1,0.27得到新的位置，即绘制出被线性变幻后的色彩空间某一面
+  //       可以考虑如下几种矩阵：
+  //          2 0
+  //          0 2
+  //          ------
+  //          1  0.27
+  //          0  1
+  //          ------
+  //          0.5    0.87
+  //          -0.87  0.5
+
 
 
 
@@ -120,4 +173,5 @@ const dottedLine3_2 = e => {
 
 
 </script>
+
 </html>
