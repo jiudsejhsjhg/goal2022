@@ -33,21 +33,22 @@
 function stringify(obj) {
   if (obj && typeof obj == 'object') { //是对象要分为两种情况
     if(Array.isArray(obj)) {  //那如果是数组
-
+      var result = '['
+      for (var i = 0 ; i <ary)
     } else {  //反则就是对象
       var result = '{'  // 先等于个花括号，后面再拼接
      for (var key in obj) {           //是对象就映射obj
-      var  val = boj[key]  //val就是key属性从obj取出来的值
+      var  val = obj[key]  //val就是key属性从obj取出来的值
       result += '"' + key +'":' + val + ','  //
     }
 
+    result += '}'  //循环结束后再加上花括号  拼接就返回
+   return result
     }
-   result += '}'  //循环结束后再加上花括号  拼接就返回
-  return result
 
   }
-
 }
+
 
 
 </script>
