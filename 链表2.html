@@ -1,0 +1,231 @@
+<script>
+
+function ListNode (val,next = null) {
+   this.val = val  //创建新的结点
+   this.next = next
+}
+
+function createListNode(val, next) {
+  return new ListNode(val, next) // 该函数在我们调用ListNode时不需要在前面添加new
+}
+
+
+
+  //将列表的第一个结点返回    将链表转成数组
+function arrayTolist1(ary) {
+  if (ary.length == 0) {  //空列表是返回空
+    return null  //null等于空链表
+  }
+   //创建一空数组，到时用于push存储对象
+  var nodes = []
+ //  针对每个数组元素创建一个链表结点并保存         //创建循环，nodes来创建对象，val的值为ary[i]，enxt不知道的情况下为null，串联起来
+  for (var i = 0 ; i < ary.length ; i++) {
+    var node = { //创建好的结点
+      val: ary[i],
+      next: null,
+    }
+    nodes.push(node) //创建好的链表结点往空数组里push
+  }
+
+  //冲第一项遍历到倒数第二个，最后一个不需要再次遍历， 因为最后一项指为空
+   //将链表结点的前一个next属性指向下一个结点
+  for (var i = 0 ; i < ary.length - 1; i++) {
+  var currNode = nodes[i]      //我遇到的currNode就等于ary[i]
+  currNode.next = nodes[i + 1]
+   //用当前的currNode.next（结点）指向下一个des[i + 1]（结点）
+    //  相当于将下一个结点的地址存到上一个结点的next属性上
+  }
+
+ return nodes[0]
+}
+//创建链表或将链表串起来   将链表转成数组
+function arrayTolist2(ary) {
+  var dummyNode = {val: 0, next: null}  //不是直接给空值，不然在下方循环时再直接给null赋值会崩，让它直接为一个空的结点
+  var prevNode = dummyNode   //这样dummyNode结点可以一直指向第一个结点
+  for (var i = 0 ; i < ary.length; i++) {
+    var node = {  //根据数组的当前项创建了一个结点
+      val: ary[i],
+      next: null,//下一部需要被上一个结点指向
+    }
+    prevNode.next = node   //prevNode等于当前结点
+    prevNode = node  //当前结点即成为了下一圈的“前一个结点”
+  }
+  return prevNode.next  //然后返回前一个结点
+}
+
+//使用函数将数组转链表返回
+function arrayToListR(ary) {
+  if (ary.length == 0) {  //数组长度为零得时候返回空
+    return null
+  }
+  //第一个元素的创建结点
+  var head = {
+    val: ary[0],
+    next: null,
+  }
+
+  //剩余元素再组成新的数组
+  var restArray = ary.slice(1)  //从第一项开始slice
+   //新的数组转成链表
+   var tail = arrayToListR(restArray) // 把剩下的数组转成链表，tail链表的头结点
+  //第一个结点的next指向该链表的头结点
+    head.next = tail  //把一个值得结点指向tail
+
+  return head
+}
+
+//将遇到的链表返回数组
+function listToArray(list) {
+  var result = []
+  while(list) {//如果list它的值为空那就不会执行，而在执行的时候list会依次指向下一个结点，当他指向最后一个结点那它就是一个对象
+  result.push(list.val)
+  list = list.next   //list.next等于我当前的结点取到下一个结点放到list这个变量上
+
+  }
+
+
+  return result
+}
+
+//将遇到的链表返回数组   递归写法
+function listToArrayR(list) {
+  if (!list) {
+    return []
+  }
+  var tail = list.next  //除了第一个结点以外的结点组成的“尾巴” 链表
+
+  //将头结点的值跟尾巴链表转换的到的数组连成一个更大数组，那值就是结果
+  //而把尾巴链表转换得到的数组可以递归完成
+  var 尾巴数组 = listToArrayR(tail)
+  尾巴数组.unshift(list.val)  //把前结点unshift（安插）尾巴数组的前面
+
+  return 尾巴数组  //返回尾巴数组就可以了
+
+
+}
+
+
+//往链表list得前面增加新的结点，结点值为val
+function prepend(list, val) {
+  var node = {
+    val: val,  //创建一个结点，结点那就是传进来得val
+    next: list,  //next 属性为list这个链表
+  }
+  return node  //直接返回node
+  /*或者以下代码*/
+  /*   var node = {
+  *    val: val,
+  *    next: null,  //让node 下个结点为空
+    }
+    node.next = list  //node得下个结点指向list
+    return node
+  */
+}
+
+//在链表后面添加新的元素val
+function append(list , val) {
+   var node = {  //创建一个新的结点
+    val: val,   //要传入的值为val
+    next: null,
+   }
+   var p = list  //用于保存头结点，这样不会改变头结点的结点
+   if (!p) {
+    return node //链表为空直接返回node，因为给空的结点加入新的结点，我们创建的结点就是唯一的结点
+   }
+   //p的下一个结点存在，就往后移动p
+   while (p.next ) {  //判断后面是否还有结点
+    p = p.next // 将指针往后移，当指针指向最后一项就不移，怎么判断，当后面还有结点就往后走
+   }
+  p.next = node //移动完后，让p的next等于node（我们要增加的结点）
+  return list //然后再返回头结点，头结点是不变的
+
+}
+
+
+//函数版本   在链表后面添加新的元素val    给链表末尾增加元素相当于给尾巴链表的末尾增加元素
+function append(list , val) {
+  if (!list) {  //链表为空，直接返回新的结点
+    node = {
+      val: val,
+      next: null,
+
+    }
+    return node
+  }
+  if (!list.next) { //满足这个条件说明只有一个结点，那下一个结点为空
+    var node = {
+      val: val,
+      next:null,
+    }
+    list.next = node  //list的下一个结点为node
+    return list
+
+  }
+
+  return append(list.next, val)
+}
+
+//在链表的pos位置增加一个值为val的结点
+function insert(list,pos, val) {
+
+
+}
+
+
+//删除链表pos位置的元素
+function remove(list,pos) {
+
+
+}
+
+
+
+//将数组转成链表
+function arrayToList3(ary) {
+  var list = null  //list 为空链表
+  // 然后数组倒序循环，然后把每个元素塞到空链表
+
+  for (var i = ary.length - 1 ; i >= 0 ; i--) {
+  list = prepend(list, ary[i])   //利用函数prepend在list里增加一个ary[i]的一个结点
+  }
+  return list  //,返回新的头结点 到list上
+}
+
+//返回链表下标的第几项
+function nth(list , n) {
+  if(n < 0) {
+    return undefined   //如果n小于零那就返回undefied的
+  }
+  //顺着头结点往后遍历
+  var p = list  //让p指向头结点
+
+  for (var i = 0 ; i < n && p ; i++) {  //i《 n 且p也要存在，p这样也指向一个结点
+  p = p.next   //获取下一步的结点
+
+  }
+  if (p) {
+  return p.val  //如果p的结点还在那就返回某位置的结点
+  }else {
+  return undefined //如果结点为空了那就返回undfied
+  }
+
+}
+
+//函数版本
+function nthR(list , n) {
+  if (!list || n < 0) {
+    return undefined
+  }
+  if (n == 0) {
+    return list.val
+  }
+
+  return nthR(list.next , n - 1)//取出尾巴链表的，第n个元素减一
+}
+
+function stringify(obj) {
+  
+
+}
+
+</script>

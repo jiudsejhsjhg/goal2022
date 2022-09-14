@@ -1,0 +1,207 @@
+
+
+
+数组是使用连续的内存空间存储的数据结构
+  读取其中的任何一个元素都花费相同的时间单位
+链表是使用离散的内存空间存储的数据结构
+  其中每个结点存储了下一个结点的位置
+  每个结点在内存中的位置是随机的
+  结点之间由每个结点记录的下一结点的位置来确定其内在顺序
+  读取其中的第n个元素，得从头结点开始，向后遍历n-1个结点，才能读到
+
+链表：
+  易增删
+  难查找
+数组：
+  易查找
+  难增删
+
+
+<script>
+
+  function ListNode(val, next = null) {
+      this.val = val
+      this.next = next
+  }
+
+
+  function arrayToList(ary) {
+    if (ary.length == 0) {
+      return null // null表示空链表
+    }
+
+    var nodes = []
+
+    // 针对每个数组元素创建一个链表结点并存起来
+    for (var i = 0; i < ary.length; i++) {
+      var node = {
+        val: ary[i],
+        next: null,
+      }
+      nodes.push(node)
+    }
+
+    // 将链表结点的前一个的next属性指向下一个结点
+    for (var i = 0; i < ary.length - 1; i++) {
+      var currNode = nodes[i]
+      currNode.next = nodes[i + 1] // 相当于将下一个结点的地址存到上一个结点的next属性上
+    }
+
+    return nodes[0]
+  }
+
+  function arrayToList2(ary) {
+    var dummyNode = {val: 0, next: null}
+    var prevNode = dummyNode
+
+    for (var i = 0; i < ary.length; i++) {
+      var node = {
+        val: ary[i],
+        next: null,
+      }
+      prevNode.next = node
+      prevNode = node // 当前结点即成为了下一圈的"前一个结点"
+    }
+
+    return dummyNode.next
+  }
+
+  function arrayToListR(ary) {
+    if (ary.length == 0) {
+      return null
+    }
+    // 第一个元素创建结点
+    var head = {
+      val: ary[0],
+      next: null,
+    }
+    // 剩余元素组成新的数组
+    var restArray = ary.slice(1)
+    // 新的数组转成链表
+    var tail = arrayToListR(restArray)
+    // 第一个结点的next指向该链表的头结点
+    head.next = tail
+
+    return head
+  }
+
+  function listToArray(list) {
+    var result = []
+
+    while (list) {
+      result.push(list.val)
+      list = list.next
+    }
+
+    return result
+  }
+
+  function listToArrayR(list) {
+    if (!list) {
+      return []
+    }
+    var tail = list.next // 除第一个结点以外的结点组成的"尾巴"链表
+
+    // 将头结点的值跟尾巴链表转换得到的数组连成一个大数组即为结果
+    // 而把尾巴链表转换得到的数组可以递归完成
+    var 尾巴数组 = listToArrayR(tail)
+
+    尾巴数组.unshift(list.val)
+
+    return 尾巴数组
+  }
+
+  // 往链表list的前面增加一个新的结点,结点的值为val
+  function prepend(list, val) {
+    var node = {
+      val: val,
+      next: null
+    }
+    node.next = list
+    return node
+  }
+
+  function append(list, val) {
+    var node = {
+      val: val,
+      next: null,
+    }
+
+    var p = list
+
+    // 如果链表为空,直接返回新的结点
+    if (!p) {
+      return node
+    }
+
+    // p的下一个结点存在,就往后移动p
+    while (p.next) {
+      p = p.next
+    }
+
+    p.next = node
+    return list
+  }
+
+  // 给链表末尾增加元素相当于给尾巴链表的末尾增加元素
+  function append(list, val) {
+    if (!list) { // 链表为空,直接返回创建的新结点
+      var node = new ListNode(val)
+      return node
+    }
+    if (!list.next) {// 链表只有一个结点时,满足这个条件说明链表只有一个结点
+      var node = new ListNode(val)
+      list.next = node
+      return list
+    }
+
+    return append(list.next, val)
+  }
+
+  // 在链表的pos位置增加一个值为val的结点
+  function insert(list, pos, val) {
+
+  }
+  // 删除链表pos位置的元素
+  function remove(list, pos) {
+
+  }
+
+  function arrayToList3(ary) {
+    var list = null
+
+    for (var i = ary.length - 1; i>= 0; i--) {
+      list = prepend(list, ary[i])
+    }
+
+    return list
+  }
+
+  function nth(list, n) {
+    if (n < 0) {
+      return undefined
+    }
+    var p = list
+
+    for (var i = 0; i < n && p; i++) {
+      p = p.next
+    }
+
+    if (p) {
+      return p.val
+    } else {
+      return undefined
+    }
+  }
+
+  function nthR(list, n) {
+    if (!list || n < 0) {
+      return undefined
+    }
+    if (n == 0) {
+      return list.val
+    }
+    return nthR(list.next, n - 1)
+  }
+
+</script>

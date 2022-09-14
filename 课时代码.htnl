@@ -1,0 +1,36 @@
+<script>
+//将这段文字编写代码转成对象输出
+//www.baidu.com/ search?a=asdf&b=aef&c=3&c=2&c=5&d=wfe
+  function parseQueryString(str) {
+    var obj = {}
+    var pairs = str.split('&')             //从&符拆开，拆开后得到数组
+    pairs.forEach(function(pairs) {     //遍历pairs
+      var [key, val] = pairs.split('=')   //再将值从等号开始拆分  ,得出数组，左边的是属性名，右边是值
+      if (key in obj) {  //如果obj里有key的字段了我们应该将这字段转化成数组
+
+        if (!Array.isArray(obj[key])) {  //如果obj 里的key不是数组
+          obj[key] = [   obj[key]   ]  //如果不是数组那就构建一个数组
+        }
+        obj[key].push(val)   //是数组就往里push
+
+      } else {
+        obj[key] = val  // 没有遇到重复的 再把属性名和属性值作为 对象的属性名和值 进对象
+
+      }
+    })
+    return obj
+  }
+        //效果示例如下：
+        `
+        {
+          a: 'asdf',
+          b: 'aef',
+          c: [3,2,5],
+          d: 'wfe'
+        }
+
+        `
+
+
+
+</script>

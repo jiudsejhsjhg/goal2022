@@ -1,0 +1,466 @@
+<script>
+
+var journal = [
+    {
+      "events": ["carrot", "exercise", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["bread", "pudding", "brushed teeth", "weekend", "touched tree"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "nachos", "brushed teeth", "cycling", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["brussel sprouts", "ice cream", "brushed teeth", "computer", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["potatoes", "candy", "brushed teeth", "exercise", "weekend", "dentist"],
+      "squirrel": false
+    }, {
+      "events": ["brussel sprouts", "pudding", "brushed teeth", "running", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["pizza", "brushed teeth", "computer", "work", "touched tree"],
+      "squirrel": false
+    }, {
+      "events": ["bread", "beer", "brushed teeth", "cycling", "work"],
+      "squirrel": false
+    }, {
+      "events": ["cauliflower", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["pizza", "brushed teeth", "cycling", "work"],
+      "squirrel": false
+    }, {
+      "events": ["lasagna", "nachos", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["brushed teeth", "weekend", "touched tree"],
+      "squirrel": false
+    }, {
+      "events": ["lettuce", "brushed teeth", "television", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["spaghetti", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["brushed teeth", "computer", "work"],
+      "squirrel": false
+    }, {
+      "events": ["lettuce", "nachos", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "brushed teeth", "running", "work"],
+      "squirrel": false
+    }, {
+      "events": ["brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["cauliflower", "reading", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["bread", "brushed teeth", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["lasagna", "brushed teeth", "exercise", "work"],
+      "squirrel": false
+    }, {
+      "events": ["spaghetti", "brushed teeth", "reading", "work"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "ice cream", "brushed teeth", "television", "work"],
+      "squirrel": false
+    }, {
+      "events": ["spaghetti", "nachos", "work"],
+      "squirrel": false
+    }, {
+      "events": ["cauliflower", "ice cream", "brushed teeth", "cycling", "work"],
+      "squirrel": false
+    }, {
+      "events": ["spaghetti", "peanuts", "computer", "weekend"],
+      "squirrel": true
+    }, {
+      "events": ["potatoes", "ice cream", "brushed teeth", "computer", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["potatoes", "ice cream", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["peanuts", "brushed teeth", "running", "work"],
+      "squirrel": false
+    }, {
+      "events": ["potatoes", "exercise", "work"],
+      "squirrel": false
+    }, {
+      "events": ["pizza", "ice cream", "computer", "work"],
+      "squirrel": false
+    }, {
+      "events": ["lasagna", "ice cream", "work"],
+      "squirrel": false
+    }, {
+      "events": ["cauliflower", "candy", "reading", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["lasagna", "nachos", "brushed teeth", "running", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["potatoes", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "work"],
+      "squirrel": false
+    }, {
+      "events": ["pizza", "beer", "work", "dentist"],
+      "squirrel": false
+    }, {
+      "events": ["lasagna", "pudding", "cycling", "work"],
+      "squirrel": false
+    }, {
+      "events": ["spaghetti", "brushed teeth", "reading", "work"],
+      "squirrel": false
+    }, {
+      "events": ["spaghetti", "pudding", "television", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["bread", "brushed teeth", "exercise", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["lasagna", "peanuts", "work"],
+      "squirrel": true
+    }, {
+      "events": ["pizza", "work"],
+      "squirrel": false
+    }, {
+      "events": ["potatoes", "exercise", "work"],
+      "squirrel": false
+    }, {
+      "events": ["brushed teeth", "exercise", "work"],
+      "squirrel": false
+    }, {
+      "events": ["spaghetti", "brushed teeth", "television", "work"],
+      "squirrel": false
+    }, {
+      "events": ["pizza", "cycling", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "brushed teeth", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "beer", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["pizza", "peanuts", "candy", "work"],
+      "squirrel": true
+    }, {
+      "events": ["carrot", "peanuts", "brushed teeth", "reading", "work"],
+      "squirrel": false
+    }, {
+      "events": ["potatoes", "peanuts", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "nachos", "brushed teeth", "exercise", "work"],
+      "squirrel": false
+    }, {
+      "events": ["pizza", "peanuts", "brushed teeth", "television", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["lasagna", "brushed teeth", "cycling", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["cauliflower", "peanuts", "brushed teeth", "computer", "work", "touched tree"],
+      "squirrel": false
+    }, {
+      "events": ["lettuce", "brushed teeth", "television", "work"],
+      "squirrel": false
+    }, {
+      "events": ["potatoes", "brushed teeth", "computer", "work"],
+      "squirrel": false
+    }, {
+      "events": ["bread", "candy", "work"],
+      "squirrel": false
+    }, {
+      "events": ["potatoes", "nachos", "work"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "pudding", "brushed teeth", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "brushed teeth", "exercise", "weekend", "touched tree"],
+      "squirrel": false
+    }, {
+      "events": ["brussel sprouts", "running", "work"],
+      "squirrel": false
+    }, {
+      "events": ["brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["lettuce", "brushed teeth", "running", "work"],
+      "squirrel": false
+    }, {
+      "events": ["candy", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["brussel sprouts", "brushed teeth", "computer", "work"],
+      "squirrel": false
+    }, {
+      "events": ["bread", "brushed teeth", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["cauliflower", "brushed teeth", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["spaghetti", "candy", "television", "work", "touched tree"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "pudding", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["lettuce", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "ice cream", "brushed teeth", "cycling", "work"],
+      "squirrel": false
+    }, {
+      "events": ["pizza", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["spaghetti", "peanuts", "exercise", "weekend"],
+      "squirrel": true
+    }, {
+      "events": ["bread", "beer", "computer", "weekend", "touched tree"],
+      "squirrel": false
+    }, {
+      "events": ["brushed teeth", "running", "work"],
+      "squirrel": false
+    }, {
+      "events": ["lettuce", "peanuts", "brushed teeth", "work", "touched tree"],
+      "squirrel": false
+    }, {
+      "events": ["lasagna", "brushed teeth", "television", "work"],
+      "squirrel": false
+    }, {
+      "events": ["cauliflower", "brushed teeth", "running", "work"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "brushed teeth", "running", "work"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "reading", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["carrot", "peanuts", "reading", "weekend"],
+      "squirrel": true
+    }, {
+      "events": ["potatoes", "brushed teeth", "running", "work"],
+      "squirrel": false
+    }, {
+      "events": ["lasagna", "ice cream", "work", "touched tree"],
+      "squirrel": false
+    }, {
+      "events": ["cauliflower", "peanuts", "brushed teeth", "cycling", "work"],
+      "squirrel": false
+    }, {
+      "events": ["pizza", "brushed teeth", "running", "work"],
+      "squirrel": false
+    }, {
+      "events": ["lettuce", "brushed teeth", "work"],
+      "squirrel": false
+    }, {
+      "events": ["bread", "brushed teeth", "television", "weekend"],
+      "squirrel": false
+    }, {
+      "events": ["cauliflower", "peanuts", "brushed teeth", "weekend"],
+      "squirrel": false
+    }
+  ]
+
+
+function phi(table) {
+  return (table[3] * table[0] - table[1] * table[2]) //返回的值： 1 * 76 - 9 * 4 = 40
+     Math.sqrt((table[2] + table[3]) * // 4 + 1 = 5 这里的2，3 表示的是4和1所在的下标
+               (table[0] + table[1]) *      //【76 ， 9 ， 4 ， 1 】    数组
+               (table[1] + table[3]) *     //   0     1    2    3    下标
+               (table[0] + table[2]) )       //  00    01   10    11   二进制
+}
+
+function hasEvent(event,entry) {   //判断某事件在某天是否有发生,有没有做过某件事
+return entrt.events.indexOf(event) != -1  // 如果有找到某事件就返回其下标，未找到返回-1
+}
+
+function tableFor(event, 日志) {  //接受某事件与记录变松鼠的表格日志
+  var table = [0 , 0 , 0 , 0]  // 长度为4  还没有开始遍历所以数组还是为空为0
+     for (var i = 0; i < 日志.length; i++) {  //遍历日志的所有信息
+      var entry = 日志[i]   // 拿到某一天的信息，发生的事件和是否有变松鼠
+      index = 0   //即每没有变松鼠，也没做某事件  高位和低位都是0
+       if (hasEvent(event , entry)) {
+        index += 1   //+1 代表低位加1  低位是这天发生这件事事件加一
+       }
+       if (hasEvent(event,squirrel)){
+        index += 2 //+2 代表高位加1   高位是记录是否有变松鼠
+       }
+       table[index]++ //让表格下标（高位/低位）的位置加一
+     }
+     return table
+}
+
+tableFor("pizza" , 日志)
+
+
+
+function phi(table) {
+  return (table[3] * table[0] - table[1] * table[2])
+  Math.sqrt((table[2] + table[3]) *
+            (table[0] + table[1]) *
+            (table[1] + table[3]) *
+            (table[0] + table[2]) )
+}
+
+function hasEvent(event,entry) {
+  return entry.events.indexdOf(event) != -1
+}
+
+function tableFor(event, 日志) {
+  var table = [0, 0, 0, 0]
+  for (var i = 0; i < 日志.length; i++) {
+    var entry = 日志
+    index = 0
+    if (hasEvent(event, entry)) {
+      index += 1
+    }
+    if (hasEvent(event, squirrel)) {
+      index += 2
+    }
+    table[index]++
+  }
+  return table
+}
+
+for (var i = 0; i< journal.length; i++) {  //先遍历日志里所有的事件
+  var entry = journal[i]  //取出里的第i项
+  if (hasEvent("peanuts" , entry) && !hasEvent('brushed teeth', entry)) {  //对比吃了花生刷了牙，是假的就push”吃了花生但没刷牙“
+      entry.events.push('吃了花生但没刷牙')
+  }
+}
+
+
+    function maxSum(ary) {
+      if (ary.lenght == 0) {
+        return 0
+      }
+      if (ary.length == 1) {
+        if (ary[0] >= 0) {
+          return ary[0]
+        } else {
+          return ary[0] // 如果必须选一个数，则返回唯一的一个数，如果可以不选，返回0
+        }
+      }
+      var midIdx = Math.floor(ary.length / 2)  //将值分成两份
+      var leftAry = ary.slice(0,midIdx) // 左半边的数组  不包含最后一项
+      var rightAry = ary.slice(midIdx)   // 右半边   包含最后一项
+
+      var leftMax = maxSum(leftAry)  //函数要是能实现，那就能算出left的最大字串和
+      var rightMax = maxSum(rightAry) //那就能算出rightAry的最大字串和
+
+    //跨越中间的最大值
+    var leftSum = 0 // 左边的位置最大字串和
+    var leftRunningmax = 0
+
+    for (var i = leftAry.length - 1 ; i >= 0; i--) {
+      leftSum += leftAry[i]
+      if (leftsum > leftRunningmax) {
+        leftRunningmax = leftSum  // leftSum 他大于与leftMax那就替换它
+      }
+    }
+
+    var rightSum = 0
+    var rightRunningmax = 0
+    for (var i = 0 ; i < rightAry.length; i++) {  //右边从0开始遍历
+      rightSum += rightAry[i]
+      if (rightSum > rrightRunningmax) {
+        rightRunningmax = rightSum   //rightSum 的值大于rigrhtRunningMax 那就替换掉之前的值
+      }
+    }
+
+    var crossMax = leftRunningmax + rightRunningmax   ///跨域中间位置的最大字串和
+
+    }
+    return Math.max(leftMax , rightMax , corssMax)
+    // 他们的最大字串和就是答案
+
+
+
+ function maxSum(ary) {
+    if (ary.length == 0) {
+      return 0
+    } if (ary.length == 1) {
+      if (ary[0] >= 0) {
+        return ary[0]
+      } else {
+        return ary[0]
+      }
+    }
+  var midIdx = Math.floor(ary.length / 2)  // 将数组分成两半
+  var leftAry = ary.slice(0,midIdx)   // 左边的数组不包含最后一项
+  var rightAry = ary.slicr(midIdx)  // 右边的数组  包含最后一项
+
+  var leftMax = maxSum(leftAry)
+  var rightMax = maxSum(rightAry) // 函数能实现，那就能算出left的最大字串和
+
+  var leftSum = 0  //左边的位置最大字串和
+  var leftRunningmax = 0  //用于数组移动时替换
+    for (var i = leftAry.length - 1; i >= 0 ; i--) {
+      leftSum += leftAry[i]   // 将leftAry[i]的值和lestSum 的相加起来
+      if (leftSum > leftRunningmax) {
+        leftRunningmax = leftSum   //leftSum的值大于leftRunningmax 那将之间的替换掉
+      }
+    }
+
+    var rightSum = 0
+    var rightRunningmax = 0
+    for (var i = 0 ; i < rightAry.length ; i++) {
+         rightSum += rightAry[i]
+         if (rightSum > rightRunningmax) {
+          rightRunningmax = rightSum
+         }
+    }
+
+  var crossMax = leftRunningmax + rightRunningmax
+  return Math.max(leftMax , rightMax , crossMax)
+
+
+
+ }
+
+  function swap(t,ary,i,j) {
+    t = ary[i]
+    ary[i] = ary[j]
+    var[j] = t
+
+  }
+
+  function qSprt(ary) {
+    var pivotIndex = Math.random() * ary.length | 0
+    //哨兵元素
+  }
+
+
+
+  function gatherCorrelations(journal) {
+    var phis = {}
+    journal.forEach(function (entry){   //journal遍历的每一项是entry（登记）
+
+      var events = entry.events   //entry里取出events（事件）
+      events.forEach(function(event){ //再把events遍历得到event
+        if (!(event in phis))  //如果event在phis里计算过，如果没计算过，把表拿到传给phi函数计算传入phis
+        phis[event] = phi(tableFor(event,journal))
+
+      })
+
+      })
+
+    return phis
+  }
+
+
+
+</script>

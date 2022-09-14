@@ -1,0 +1,282 @@
+<script>
+//生成长度为n的随机数组成的数组
+  function randomArray(n) {   // randomArray  翻译随机的数组
+      var result = []     //先创建一个空数组
+      for (var i = 0 ; i < n; i++) {
+        result.push(Math.random() * n | 0)   // 在空数组中push随机的数组
+          // 使用函数Math.random 乘上n（n是我们输入的值，相乘得出随机的数） |0 是为了取整数
+      }
+      return result  //返回新的数组
+
+  }
+
+
+//判断一个数组是不是升序（非递减）的
+  function isSorted(ary) {
+    for (var i = 0 ; i < ary.length ; i++) {   //先循坏
+      if (ary[i] < ary[i - 1]) {  //正常情况下ary[i] 是>= ary[i - 1] 的
+        return false   //所以小于了ary[i - 1] 那么就是假
+      }
+    }
+    return true
+  }
+//
+
+
+//冒泡排序
+  function bubbleSort(ary) {
+    for (var stop = ary.length - 1 ; stop >= 1; stop--){  //只需要ary.length 的位置发生改动就可以了   ,从开头开始到开头位置结束
+      for (var i = 0; i < stop; i++) {   //内存循坏，将数组遍历一遍，最后一个不需要再去遍历 所以减一
+        if(ary[i] > ary[i + 1]) {  //如果ary[i]  大于 ary[ i + 1]
+          var t = ary[i + 1]  // 那就将ary[i + 1] 先保存下来， 如果直接ary[i + 1] = ary[i]  会将ary [i + 1] 的值覆盖
+          ary[ i + 1] = ary[i]   // ary[i] 的值赋给ary[i + 1]
+          ary[i] = t //  ary[i] 的值给t 进行交换位置
+        }
+      }
+
+    }
+    return ary   //循坏结束就直接返回ary
+  }
+//想法是遍历时时逐步减一的，遍历的数组长度是在减少的，
+// 那么ary[i] 如果大于了ary[i + 1]项，那么就需要将他们两者的值进行更换
+// 先把ary[i + 1] 的值先存储到另一个变量上，再把ary[i + 1] 的值 换成ary[i]
+// t(ary[i + 1]) 的值再给到ary[i]上,就是利用变量t把两者之间的值互换，并且不会覆盖它们的值
+
+
+//冒泡排序版本二
+/**
+ * 时间复杂度为：O（n*n） 有循环嵌套  内存循坏是依次递减的，首先是n - 1 ，n- 2，n - 3等直到最终的一次 ，所以跟n的次方有关
+ * 空间复杂度为：O（1）  因为没有创建数组，输入的数组是不算的它占用的空间   只使用到了stop，换过，i，t这四个变量
+ */
+function bubbleSort(ary) {
+  for (var stop = ary.length - 1; stop >= 1; stop--) {
+    var 换过 = false
+    for (var i = 0 ; i < stop; i++) {
+      if (ary[i] > ary[i + 1]) {
+        var 换过 = true
+        var t = ary[i + ]
+        ary[i + 1] = ary[i]
+        ary[i] = t
+      }
+    }
+    if (!换过) {
+      break
+    }
+  }
+  return ary
+ }
+//
+
+
+// 选择排序
+/**
+ *时间复杂度：n*n
+ 空间复杂度 1
+ */
+function selectSort(ary) {
+  //外层循环在遍历过一遍后逐步减一，缩小查找最小值的范围，那么start就是起点
+    for (var start = 0; start < ary.length - 1 ; start++) {  //起点最多只需要倒数第二个位置  因为倒数第一只有一个元素也需要去比较换位置
+    //用来记录无序范围内最小元素的下标
+    //先假设起点元素是最小的  那么start就作为起点的最小值
+      var minIdx = start
+      for (var i = start + 1 ; i < ary.length ; i++) {  //内存循坏找到数组的最小的值的下标 ，遍历时要从起点的下一位遍历所以+1
+        if (ary[i] < ary[minIdx]) {  //如果ary[i] 小于了我们之前记录的最小值
+          minIdx = i //换掉下标，不是换掉元素
+        }
+
+      } //找到最小的元素后放在起点的位置上，而不是0号位上
+      var map = ary[start]   //ary[start]的值赋给map  这个时候ary[start]的位置值为空
+      ary[start] = ary[minIdx]  //ary[minIdx]的值就可以赋给ary[start]交换
+      ary[minIdx] = map      //map 存着ary[start]的值   再赋给ary[minIdx]，就完成了值得互换
+
+    }
+    return ary //循环完就返回新的数组
+  }
+//
+
+//选择排序
+function selectSort(ary) {
+  for (var start = 0 ; start < ary.length -1 ; i++) {
+    var minIdx = start
+  for (var i = start + 1 ; i < ary.length; i++) {
+    if (ary[i] < ary[minIdx]) {
+      ary[minIdx] = ary[i]
+    }
+
+  }
+  var map = ary[start]
+  ary[start] = ary[minIdx]
+  ary[minIdx] = map
+
+}
+return ary
+
+}
+
+//插入排序
+//空间复杂度：1
+//时间复杂度：n*n
+ function insertSort(ary) {
+  //i指向无序部分的第一个
+  for (var i = 1; i < ary.length ; i++) {  //先从后面第一位开始从左遍历，找到比他大的值
+    var value = ary[i]  //先将要插入的先拿出来保存
+    for (var j = i - 1 ; j >= 0; j--) {  // 向前遍历找到比它大的值
+      if (ary[j] > value) {
+        ary[j + 1] = ary[j] //如果ary[j] 大于了value ，那就将 ary[j]下标加一
+      } else {
+        break  //小于等于我定的值，那么就停止循环
+      }
+    }
+    ary[j + 1] = value  // 那么要替换的值下标需要加一向后一位
+  }
+  return ary  //再返回数组
+ }
+
+//插入排序
+ function insertSort(ary) {
+  for (var i = 1; i < ary.length; i++) {
+        var value = ary[i]
+    for (var j = i - 1; j >= 0 ; j--) {
+      if (ary[j] > value) {
+        ary[j + 1] = ary[j]
+      } else {
+        break
+      }
+    }
+    ary[j + 1] = value
+  }
+  return ary
+ }
+
+
+ /**
+  *归并排序
+  *空间复杂度：n +log(n)
+  *时间复杂度：n*log(n)
+  */
+ function mergeSort(ary) {
+  if (ary.length < 2) { //基本情况
+    return ary
+  }
+  // 拆分
+  var mid = Math.floor(ary.length / 2)  //将ary数组分成两份
+  var left = ary.slice(0,mid)  //0到mid ，不包含mid
+  var right = ary.slice(mid) //从右边直接到mid
+  //排序
+  mergeSort(left)
+  mergeSort(right) // mergeSort这个函数会将该两数组自动排序
+  //合并
+  var i = 0
+  //i 和 j 分别指向left和right 的第一个值，
+  // 只要选出left和right他们的较小者放进数组就好
+  var j = 0
+  var k = 0 //记录原数组
+  //返回
+
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {  //left小于了right那么就将值放入ary[k]里 然后其下标指向的位置++
+      ary[k] = left[i]
+      k++
+      i++
+    } else {
+      ary[k] = right[j]  //right[j] 小于了left 那就将值放入ary[k] ,再将下标向右移++
+      k++
+      j++
+    }
+  }
+  while (i < left.length) {   //如果left和right有剩余的值那么就会进入以下分支排序
+    ary[k] = left[i]
+    k++
+    i++
+  }
+  while (j < right.length) {
+    ary[k] = right[j]
+    k++
+    j++
+  }
+  return ary
+ }
+
+
+function mergeSort(ary) {
+  if (ary.length < 2) {
+    return ary
+  }
+
+   // 拆分
+  var mid = Math.floo(ary.length / 2)
+  var left = ary.slice(0,mid)
+  var right = ary.slice(mid)
+   //排序
+   mergeSort(left)
+   mergeSort(right)
+
+   //合并
+  var i = 0
+  var j = 0
+  var k = 0
+  while (i < left.length && j < right.length) {
+  if (left[i] < right[j]) {
+    ary[k] = left[i]
+    k++
+    i++
+  } else {
+    ary[k] = right[j]
+    k++
+    j++
+  }
+  }
+  while (i < left.length) {
+  ary[k] = left[i]
+  k++
+  i++
+  }
+  whlie (j < right.length) {
+  ary[k] = right[j]
+  k++
+  j++
+  }
+
+  //返回
+  return ary
+
+  }
+
+
+//
+
+
+ /**
+  *快速排序，简单版本
+  *空间复杂度：n +log(n)
+  *时间复杂度：n*log(n)
+  */
+function quickSort(ary) {
+  if (ary.length < 2) {
+    return ary.slice
+  }
+  //随机选数，这个写法可以随机的获得下标
+  var num = ary.at(Math.random() * ary.length | 0)
+  //对于原数组基于选择的数分组，小于它的、等于它的、大于它的分别在一组里
+  var left =[]
+  var middle = []
+  var right = []
+  for (var i = 0 ; i < ary.length ; i++) {
+    if (ary[i] < num) {
+      left.push(ary[i])
+    } else if (ary[i] > num) {
+      right.push(ary[i])
+    } else if (ary[i] == num){
+      middle.push(ary[i])
+    }
+  }
+  //对第一组和第二组递归进行排序，使用函数排序
+  var sortedLeft = quickSort(left)
+ var sortedRight =  quickSort(right)
+  //拼接三个数组返回
+  return left.concat(middle , sortedRight )
+
+}
+
+
+</script>
