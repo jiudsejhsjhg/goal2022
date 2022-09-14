@@ -33,15 +33,22 @@
 function stringify(obj) {
   if (obj && typeof obj == 'object') { //是对象要分为两种情况
     if(Array.isArray(obj)) {  //那如果是数组
-      var result = '['
-      for (var i = 0 ; i <ary)
+      var result = "["
+      for (var i = 0 ; i < obj.length ; i++) {  //将数组遍历一边
+        result +=  obj[i]    //数组的值后面拼接
+        if (i < obj.length - 1) {  //说明不是最后一项
+          result += ','  // 不是最后一项就拼接逗号  ，是最后一项就不拼接逗号
+        }
+      }
+      result += "]"
+      return result
     } else {  //反则就是对象
       var result = '{'  // 先等于个花括号，后面再拼接
      for (var key in obj) {           //是对象就映射obj
       var  val = obj[key]  //val就是key属性从obj取出来的值
       result += '"' + key +'":' + val + ','  //
     }
-
+    result = result.slice(0, -1)  //循环结束后将最后一个逗号删除
     result += '}'  //循环结束后再加上花括号  拼接就返回
    return result
     }
@@ -49,6 +56,35 @@ function stringify(obj) {
   }
 }
 
+function stringify(obj)
+  {
+  if (obj && typeof obj == 'object ' ) {
+  if (Array.isArray(obj)) {
+  var result = '['
+  for (var i = o; i < obj.length; i++) {
+    result += stringify(obj[i])
+  if (i < obj.length - 1) {result += ','
+  }
+  }
+  result += ']'
+  return result
+ } else {
+  var result = '{'
+
+  for (var key in obj) {var val = obj[key]
+  result += '"' + key + '":' + stringify( val) + ','
+ }
+  result = result.slice(0, -1)
+  result += '}'
+  return result}
+  } else {
+  if (typeof obj == 'string') {
+
+    return '"' + obj + '"'
+  } else {
+  return string(obj)}
+  }
+}
 
 
 </script>
