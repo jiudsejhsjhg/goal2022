@@ -86,5 +86,30 @@ function stringify(obj)
   }
 }
 
+//过滤出条件大于3的元素  ，然后返回满足的条件元素
+function filter(array, test) {
+  var result = []
+  for (var i = 0 ; i < array.length ;i++) {
+    var item = array[i]
+    if ( test(array[i], i ,array )   ) {  //test用于测试array【i】的值是否满足条件
+      result.push(item)
+    }
+  }
+  return result
+ }
+
+ filter([1,2,3,4,5], function (item ,idx) {
+  return item > 3
+})
+
+
+// 计算其寿命事件
+var result = []
+for (var i = 0; i < ancestry.length ; i++) {
+  var p = ancestry[i]
+  result.push(p.died - p.born)   //计算寿命
+
+}
+console.log(result)
 
 </script>
