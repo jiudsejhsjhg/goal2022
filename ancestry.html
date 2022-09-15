@@ -1,0 +1,362 @@
+<script src="ancestry.js"></script>
+
+
+<script>
+  var ancestry = JSON.parse(ANCESTRY_FILE)
+
+  // var manCount = 0
+  // var womanCount = 0
+  // var manAge = 0
+  // var womanAge = 0
+  // for (var i = 0; i < ancestry.length; i++) {
+  //   var p = ancestry[i]
+  //   if (p.sex == 'm') {
+  //     manCount++
+  //     manAge += p.died - p.born
+  //   } else {
+  //     womanCount++
+  //     womanAge += p.died - p.born
+  //   }
+  // }
+  // console.log(manAge / manCount)
+  // console.log(womanAge / womanCount)
+
+
+//   var ary = [11,17,2,7,19,3,14,5]
+//   var result = 11
+//   for (var i = 1; i < ary.length; i++) {
+//     result = result + ary[i]
+//   }
+//   console.log(result)
+
+
+//   var ary = [11,17,2,7,19,3,14,5]
+//   var result = 11
+//   for (var i = 1; i < ary.length; i++) {
+//     result = result * ary[i]
+//   }
+//   console.log(result)
+
+
+//   var ary = [11,17,2,7,19,3,14,5]
+//   var result = ary[0]
+//   for (var i = 1; i < ary.length; i++) {
+//     result = Math.max(ary[i], result)
+//   }
+//   console.log(result)
+
+
+
+
+
+//   var ary = [11,17,2,7,19,3,14,5]
+//   var result = {}
+//   for (var i = 0; i < ary.length; i++) {
+//     // result[  ary[i]  ]   =   i
+//     result =    (result[ary[i]] = i ,  result)
+//   }
+//   console.log(result)
+
+
+
+
+// function reduce(ary, reducer, initialValue) {
+//   var result = initialValue
+//   var start = 0
+
+//   if (initialValue === undefined) {
+//     result = ary[0]
+//     start = 1
+//   }
+
+//   for (var i = start; i < ary.length; i++) {
+//     result = reducer(result, ary[i], i, ary)
+//   }
+//   return result
+// }
+
+
+
+
+function hasDup(ary) {
+  for(var i = 0;i < ary.length;i++) {
+    if (ary.incldues(ary[i])) {
+      return true
+    }
+  }
+  return false
+}
+
+
+
+function male(p) {
+  return p.sex == 'm'
+}
+
+
+var female = (p) => !male(p)
+
+
+
+// 如果数组中的每个元素传给predicate后都返回真，则every返回真，否则返回假
+function every(ary,  predicate) {
+  for(var i = 0; i < ary.length; i++) {
+    if (!predicate(ary[i], i, ary)) {
+      return false
+    }
+  }
+  return true
+}
+
+
+function every(ary, predicate) {
+  return ary.reduce((sum, item) => {
+    return sum && predicate(item)
+  }, true)
+}
+
+
+function some(ary, predicate) {
+  return ary.reduce((sum, item) => {
+    return sum || predicate(item)
+  }, false)
+}
+
+function some(ary, predicate) {
+  for(var i = 0; i < ary.length; i++) {
+    if (predicate(ary[i], i, ary)) {
+      return true
+    }
+  }
+  return false
+}
+
+
+function every(ary, predicate) {
+  return !some(ary,   it => !predicate(it)   )
+}
+
+function some(ary, predicate) {
+  return !every(ary,   it => !predicate(it)   )
+}
+
+function find(ary,  predicate) {
+  for (var i = 0; i < ary.length; i++) {
+    if (predicate(ary[i], i, ary)) {
+      return ary[i]
+    }
+  }
+}
+
+function bind(f, ...fixedArgs) {
+  return function(...args) {
+    return f(...fixedArgs, ...args)
+  }
+}
+
+
+
+function flatten(ary) {
+  var result = []
+  ary.reduce((xxx, item, idx) => {
+    result = result.concat(item)
+  }, 23)
+  return result
+}
+
+function flatten(ary) {
+  var result = []
+  for (var i = 0; i < ary.length; i++) {
+    result = result.concat(ary[i])
+  }
+  return result
+}
+
+var flatten = (ary) => {
+  return ary.reduce((result, item) => {
+    return result.concat(item)
+  }, [])
+}
+
+
+var flatten = ary => ary.reduce((result, item) => result.concat(item), [])
+var flatten = ary => ary.reduce((result, item) => Array.isArray(item) ? result.concat(    flatten(item)    ) : result.concat(item), [])
+
+
+var flatten = (ary) => {
+  return ary.reduce((result, item) => {
+
+    if (Array.isArray(item)) {
+      return result.concat(    flatten(item)    )
+    }
+    return result.concat(item)
+
+  }, [])
+}
+
+
+
+
+var byName = {}
+
+for (var i = 0; i < ancestry.length; i++) {
+  // var person = ancestry[i]
+  // var personName = person.name
+  // byName[personName] = person
+  byName = byName[ancestry[i].name] = ancestry[i], byName
+}
+
+console.log(byName)
+
+
+var byName = ancestry.reduce((obj, person) => {
+  obj[person.name] = person
+  return obj
+}, {})
+
+
+var result = {}
+for (var i = 0; i < ancestry.length; i++) {
+  result[ancestry[i].id ] = ancestry[i]
+}
+
+var result = {}
+for (var i = 0; i < ancestry.length; i++) {
+  result[ancestry[i].name ] = ancestry[i]
+}
+
+
+
+
+function keyBy1(ary, propName) {
+  var result = {}
+  for (var i = 0; i < ary.length; i++) {
+    result[  ary[i][propName]  ] = ary[i]
+  }
+  return result
+}
+
+function keyBy2(ary, 计算key值的函数) {
+  var result = {}
+  for (var i = 0; i < ary.length; i++) {
+    var key = 计算key值的函数(ary[i])
+    result[  key  ] = ary[i]
+  }
+  return result
+}
+
+
+// keyBy1(a, 'id')
+// keyBy2(a, it => it.id)
+
+
+function groupBy(ary, 计算分组名称的函数) {
+  var result = {}
+  for (var i = 0; i < ary.length; i++) {
+    var item = ary[i]
+    var groupName = 计算分组名称的函数(item)
+    if (!(groupName in result)) {
+      result[groupName] = []
+    }
+    result[groupName].push(item)
+  }
+  return result
+}
+
+
+function groupBy(ary, 计算分组名称的函数) {
+  return ary.reduce((result, item) => {
+    var item = ary[i]
+    var groupName = 计算分组名称的函数(item)
+    if (!(groupName in result)) {
+      result[groupName] = []
+    }
+    result[groupName].push(item)
+
+    return result
+  }, {})
+}
+
+
+function average(numbers) {
+  return numbers.reduce((a,b) => a + b) / numbers.length
+}
+
+
+var grouped = groupBy(ancestry, it => Math.ceil(it.died / 100) )
+debugger
+var avgAgeByCent = {}
+
+for (var cent in grouped) {
+  var persons = grouped[cent]
+  var value = average(   persons.map(it => it.died - it.born)   )
+  avgAgeByCent[cent] = value
+}
+
+console.log('每个世纪人的平均寿命:', avgAgeByCent)
+
+
+
+// 将对象的每个属性的属性值通过mapper函数映射为另一个值
+// 然后放入结果对象的同名属性上
+function mapObject(obj, mapper) {
+  var result = {}
+
+  for (var key in obj) {
+    var val = obj[key]
+    var mapped = mapper(val)
+    result[key] = mapped
+  }
+
+  return result
+}
+
+
+var 每个世纪人的平均寿命 = mapObject( grouped   ,   persons => {
+
+  return average(  persons.map(it => it.died - it.born))
+
+})
+
+console.log(每个世纪人的平均寿命)
+
+
+// 计算名为name的人，其有多少基因来源于Pauwels van Haverbeke
+
+function computeGene(name) {
+  var person = byName[name]
+  if (!person) {
+    return 0
+  }
+  if (person.name === 'Pauwels van Haverbeke') {
+    return 1
+  }
+
+  var fatherName = person.father
+  var motherName = person.mother
+
+  var fromFather = computeGene(fatherName)
+  var fromMother = computeGene(motherName)
+
+  return f(fromFather, fromMother, person)
+}
+
+
+function reduceAcenstry(name, f, defaultValue) {
+  function computeGene(name) {
+    var person = byName[name]
+    if (!person) {
+      return defaultValue
+    }
+
+    var fatherName = person.father
+    var motherName = person.mother
+
+    var fromFather = computeGene(fatherName)
+    var fromMother = computeGene(motherName)
+
+    return f(fromFather, fromMother, person)
+  }
+  return computeGene(name)
+}
+</script>

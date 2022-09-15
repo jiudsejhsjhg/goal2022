@@ -59,7 +59,66 @@ function drop(array, n = 1) {
      return a
 }
 
+function difference(array, ...values) {
+        var NewArray = []
+        var Array = []
+        Array = NewArray.flat()
+        for (var sum of array) {
+            if (!Array.includes(sum)) {
+                NewArray.push(sum)
+            }
+        }
+        return NewArray
+}
 
+function fill(array, val) {
+
+        for (var i = 0; i < array.length; i++) {
+            array[i] = val  //遍历数组后将array的i替换成val
+        }
+        return array
+}
+
+function flatten(array) {
+    var result = []
+    for (var i = 0; i < array.length; i++) {
+        if (!Array.isArray(array[i])) {
+            result.push(array[i])
+        } else {
+            for (var j = 0; j < array[i].length; j++) {
+                result.push(array[i][j])
+            }
+        }
+    }
+    return result
+}
+
+
+function flattenDeep(array) {
+     var result = []
+     for (var i = 0; i < array.length; i++) {
+        if (Array.isArrayarray[i]) {
+            flattenDeep(array[i])
+        } else {
+            result.push(array[i])
+        }
+   }
+     flattenDeep(array)
+       return result
+}
+
+
+function flattenDeepth(array, val = 1) {
+    var result = []
+    for (var i = 0; i < array.length; i++) {
+        if (Array.isArrayarray[i] && val > 0) {
+            result = result.concat(flattenDeepth(arrray[i], val - 1))
+        } else {
+            result.push(array[i])
+        }
+    }
+    return result
+}
 
 
 return {
@@ -67,7 +126,12 @@ return {
     compact,
     concat,
     drop,
-    
+    difference,
+    fill,
+    flatten,
+    flattenDeep,
+    flattenDeepth,
+
 }
 
 }()

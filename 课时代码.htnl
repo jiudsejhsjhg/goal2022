@@ -112,4 +112,117 @@ for (var i = 0; i < ancestry.length ; i++) {
 }
 console.log(result)
 
+//找出其名字
+function map (array) {
+  var result = []
+  for (var i = 0 ; i < ancestry.length ;i++) {
+    var p = ancestry[i]
+    result.push(p.name)
+
+  }
+  console.log(result)
+}
+
+//求数组的和
+var ary = [11,17,2,7,19,3,14,5]
+
+  var sum = 0
+  for (var i = 0 ; i < ary.length ; i++) {
+    sum += ary[i]
+  }
+  console.log(sum)
+
+
+  //求上数组的乘积   var ary = [11,17,2,7,19,3,14,5]
+  var product = 1
+  for (var i = 0 ; i < ary.length ;i++) {
+    product *= ary[i]
+  }
+  console.log(product)
+
+  // var ary = [11,17,2,7,19,3,14,5]   求数组的最大值
+  function reduce(ary , reduce ,initialValue) {
+    var max = initialValue
+    for (var i = 0 ; i < ary.length ;i++) {
+      if (ary[i] > max) {
+        max = reduce(max,ary[i] ,i, ary)
+      }
+    }
+    return max
+  }
+
+  var ary = [11,17,2,7,19,3,14,5]
+  var map = {}
+  for (var i = 0 ; i < ary.length ; i++) {
+    map[ary[i]] = i  //map的ary的i是映射的是ary的i
+  }
+
+
+function reduce(ary,reduce ,initialValue) {
+  var result = initialValue
+  var start = 0
+  if (initialValue == undefined) {
+    result = ary[0]
+    start = 1
+  }
+  for (var i = start ; i < ary.length; i++) {
+    result = reduce(result,ary[i], i ,ary)
+
+  }
+  return result
+}
+reduce([1,2,3,4,5,6] , (result , it) => {
+ return result + it    //result是计算返回的新的值，it是输入的数组的值
+
+}, 0 )  //初始值为0  ，可以写也可以不写
+
+
+
+
+
+
+console.log(map)
+
+// 二叉树array中的根节点在rootpos位置的二叉树转换为二叉链表形式   将数组转成二叉树形式
+将存储于array中
+function arrayToTree(array ,rootPos = 0) {
+  if (array[rootPos] == null) {
+    return null
+  }
+  var root = {
+    val: array[rootPos],
+    left: null,
+    right: null,
+
+  }
+
+  root.left = arrayToTree[array,root * 2 + 1]
+  root.right = arrayToTree(array[rootPos * 2 + 2])
+
+  return root
+
+
+}
+
+
+//将二叉树形似的对象转成数组保存
+
+function f() {
+  var array = []
+  function treeToArray(root,pos = 0) {
+
+    array[pos] = root.val
+    treeToArray(root.left,)
+
+}
+
+}
+
+
+function arrayToTree(ary) {
+
+}
+
+
+
 </script>
