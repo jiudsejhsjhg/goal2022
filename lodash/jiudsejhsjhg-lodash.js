@@ -126,11 +126,12 @@ function find(ary , predicate) {
            return ary[i]  //找到相同的元素，并返回该元素
        }
     }
+    return undefined
     }
 
 function every(ary,predicate) {
     for (var i = 0; i < ary.length; i++) {
-        if (predicate(ary[i], i, ary) == false) {
+        if (!find(predicate(ary[i], i, ary))) {
             return false
         }
     }
@@ -147,6 +148,39 @@ function some(ary,predicate) {
     return false
 }
 
+function some(ary , predicate) {
+    return ary.reduce((sum, item) => {
+        return sum || item
+    }, false)
+}
+
+
+
+    // var ary = [11,17,2,7,19,3,14,5]   求数组的最大值
+  function reduce(ary , reduce ,initialValue) {
+    var max = initialValue
+    for (var i = 0 ; i < ary.length ;i++) {
+      if (ary[i] > max) {
+        max = reduce(max,ary[i] ,i, ary)
+      }
+    }
+    return max
+  }
+
+function size(collection) {
+    if (Array.isArray(collection)) {  //是数组就返回其长度
+        return collection.length
+    } else if (typeof collection == 'string') {  //等于字符串那就返回字符串得长度
+        return collection.length
+    } else if (typeof collection == 'object') {  //返回属性得个数
+        var count = 0
+        for (var key in collection) {
+            count++
+        }
+        return count
+    }
+
+}
 
 
 
@@ -163,6 +197,8 @@ return {
     find,
     every,
     some,
+    reduce,
+    size,
 
 }
 

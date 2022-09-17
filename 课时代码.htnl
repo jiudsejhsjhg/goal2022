@@ -209,13 +209,14 @@ function some(ary, predicate) {
    }
    return false
 }
+
 function som(ary,predicate) {
   return ary.reduce((sum, item) => {
     return sum || item
   } , false)
 }
 
-//第三种写法，在实现event的情况下
+//第三种写法，在实现every的情况下
 function some(ary , predicate) {
   return !every(ary, (it ,i , ary) => !predicate(it))
 }
