@@ -135,24 +135,19 @@ function every(ary,predicate) {
             return false
         }
     }
-    return  ture //遍历完所有都没有找到false那就是ture
+    return  true //遍历完所有都没有找到false那就是ture
 }
 
 
 function some(ary,predicate) {
     for (var i = 0; i < ary.length; i++) {
-        if (predicate(ary[i], i, ary)) {
-            return ture
+        if (find(predicate(ary[i], i, ary))) {
+            return true
         }
     }
     return false
 }
 
-function some(ary , predicate) {
-    return ary.reduce((sum, item) => {
-        return sum || item
-    }, false)
-}
 
 
 

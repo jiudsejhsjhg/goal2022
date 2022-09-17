@@ -230,7 +230,11 @@ function find(ary, predicate) {
   }
 }
 
-
+function findIndex(ary, predicate) {
+  for (var i = 0 ; i < ary.length ; i++) {
+    
+  }
+}
 
 //将上篇的松鼠人代码使用forEach改写
 function gatherCorrelations(journal) {
