@@ -123,10 +123,32 @@ function flattenDeepth(array, val = 1) {
 function find(ary , predicate) {
     for (var i = 0; i < ary.length; i++) {
         if (predicate(ary[i], i, ary)) {
-           return ary[i]
+           return ary[i]  //找到相同的元素，并返回该元素
        }
     }
+    }
+
+function every(ary,predicate) {
+    for (var i = 0; i < ary.length; i++) {
+        if (predicate(ary[i], i, ary) == false) {
+            return false
+        }
+    }
+    return  ture //遍历完所有都没有找到false那就是ture
 }
+
+
+function some(ary,predicate) {
+    for (var i = 0; i < ary.length; i++) {
+        if (predicate(ary[i], i, ary)) {
+            return ture
+        }
+    }
+    return false
+}
+
+
+
 
 return {
     chunk,
@@ -139,6 +161,8 @@ return {
     flattenDeep,
     flattenDeepth,
     find,
+    every,
+    some,
 
 }
 
