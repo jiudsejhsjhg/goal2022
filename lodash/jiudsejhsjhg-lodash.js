@@ -120,6 +120,13 @@ function flattenDeepth(array, val = 1) {
     return result
 }
 
+function find(ary , predicate) {
+    for (var i = 0; i < ary.length; i++) {
+        if (predicate(ary[i], i, ary)) {
+           return ary[i]
+       }
+    }
+}
 
 return {
     chunk,
@@ -131,6 +138,7 @@ return {
     flatten,
     flattenDeep,
     flattenDeepth,
+    find,
 
 }
 

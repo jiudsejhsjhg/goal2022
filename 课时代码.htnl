@@ -177,11 +177,90 @@ reduce([1,2,3,4,5,6] , (result , it) => {
 }, 0 )  //初始值为0  ，可以写也可以不写
 
 
+//高阶函数   //如果数组中的每个元素传给predicate后都返回真，则every返回真，否则返回假
+function every(ary,predicate) {
+  for (var i = 0 ; i < ary.length ;i++) {  //先遍历整个数组
+     if (predicate(ary[i] ,i , ary) == false) {  //如果等于false,直接返回false   //
+      //也可以（！president（ary[i] , i , aaary) 就是转成布尔再取反，就是转成布尔为假那取反为真
+        return false
+  }  //将ary的项（值）传给predicate，为了方便，也会把数组的下标，和数组本身上传
+      return true   //循环结束了也没有返回假那就是true
+  }
+}
+//使用reduce来实现every高阶函数
+function every(ary, predicate) {
+    return ary.reduce(function(sum,item) {
+    return sum && predicate(item)
+  }, true)  //true是初始值
+}
+
+//第三种写法，在实现了some的情况下
+function every(ary,predicate) {
+  return !some(ary , (it,i ,ary) => !predicate(it))
+
+}
+
+//  高阶函数   //任何一个为真就返回真  ,如果没有一个能返回真那返回false
+function some(ary, predicate) {
+   for (var i = 0 ; i < ary.length ; i++ ) {
+     if (predicate(ary[i] , i , ary)) {
+      return true
+     }
+   }
+   return false
+}
+function som(ary,predicate) {
+  return ary.reduce((sum, item) => {
+    return sum || item
+  } , false)
+}
+
+//第三种写法，在实现event的情况下
+function some(ary , predicate) {
+  return !every(ary, (it ,i , ary) => !predicate(it))
+}
+
+//找到相同的元素返回，找不到返回undefined
+function find(ary, predicate) {
+  for (var i = 0 ; i < ary.length ; i++) {
+    if (predicate(ary[i] , i , ary)) {
+      return ary[i]
+    }
+  }
+}
+
+
+
+//将上篇的松鼠人代码使用forEach改写
+function gatherCorrelations(journal) {
+  var phis = {}
+  for (var entry = 0 ; entry < journal.length; entry++) {
+    var events = journal[entry].events  //每次拿到当天的evevts
+  for (var i = 0 ; i < events.length ; i++) {
+    var event = events[i]
+    if (!(event in phis)) {
+      phis[event] = phis(tableFor(event,journal))
+    }
+  }
+  }
+  return phis
+}
+
+function gatherCorrelations(journal) {
+  var phis = {}
+  journal.forEach(function(entry) {
+    entry.nents.forEach(function(nent) {
+      if (!(event in phis)) {
+        phis[event] = phis(tableFor(event,journal))
+      }
+    })
+  })
+  return phis
+}
 
 
 
 
-console.log(map)
 
 // 二叉树array中的根节点在rootpos位置的二叉树转换为二叉链表形式   将数组转成二叉树形式
 将存储于array中
@@ -222,6 +301,18 @@ function f() {
 function arrayToTree(ary) {
 
 }
+
+
+
+function f(array) {
+
+  for (var i = 0 ; i < arry.length; i++) {
+
+  }
+}
+
+
+
 
 
 
