@@ -232,7 +232,9 @@ function find(ary, predicate) {
 
 function findIndex(ary, predicate) {
   for (var i = 0 ; i < ary.length ; i++) {
-    
+    if (predicate(ary[i] , i , ary)) {
+      return i
+    }
   }
 }
 

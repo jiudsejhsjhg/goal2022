@@ -97,7 +97,7 @@ function flatten(array) {
 function flattenDeep(array) {
      var result = []
      for (var i = 0; i < array.length; i++) {
-        if (Array.isArrayarray[i]) {
+        if (Array.isArray(array[i])) {
             flattenDeep(array[i])
         } else {
             result.push(array[i])
@@ -111,8 +111,8 @@ function flattenDeep(array) {
 function flattenDeepth(array, val = 1) {
     var result = []
     for (var i = 0; i < array.length; i++) {
-        if (Array.isArrayarray[i] && val > 0) {
-            result = result.concat(flattenDeepth(arrray[i], val - 1))
+        if (Array.isArray(array[i]) && val > 0) {
+            result = result.concat(flattenDeepth(array[i], val - 1))
         } else {
             result.push(array[i])
         }
@@ -120,14 +120,6 @@ function flattenDeepth(array, val = 1) {
     return result
 }
 
-function find(ary , predicate) {
-    for (var i = 0; i < ary.length; i++) {
-        if (predicate(ary[i], i, ary)) {
-           return ary[i]  //找到相同的元素，并返回该元素
-       }
-    }
-    return undefined
-    }
 
 function every(ary,predicate) {
     for (var i = 0; i < ary.length; i++) {
@@ -151,16 +143,16 @@ function some(ary,predicate) {
 
 
 
-    // var ary = [11,17,2,7,19,3,14,5]   求数组的最大值
-  function reduce(ary , reduce ,initialValue) {
+// var ary = [11,17,2,7,19,3,14,5]   求数组的最大值
+function reduce(ary , reduce ,initialValue) {
     var max = initialValue
     for (var i = 0 ; i < ary.length ;i++) {
-      if (ary[i] > max) {
-        max = reduce(max,ary[i] ,i, ary)
-      }
+        if (ary[i] > max) {
+            max = reduce(max,ary[i] ,i, ary)
+        }
     }
     return max
-  }
+}
 
 function size(collection) {
     if (Array.isArray(collection)) {  //是数组就返回其长度
@@ -174,7 +166,21 @@ function size(collection) {
         }
         return count
     }
+}
+function find(ary , predicate) {
+    for (var i = 0; i < ary.length; i++) {
+        if (predicate(ary[i], i, ary)) {
+           return ary[i]  //找到相同的元素，并返回该元素
+       }
+    }
+    }
 
+function findIndex(ary ,predicate){
+    for (var i = 0; i < ary.length; i++) {
+        if (predicate(ary[i], i, ary)) {
+            return i
+        }
+    }
 }
 
 
@@ -194,6 +200,10 @@ return {
     some,
     reduce,
     size,
+    findIndex,
+
+
+
 
 }
 
