@@ -230,6 +230,7 @@ function find(ary, predicate) {
   }
 }
 
+//找到相同的元素，返回其下标
 function findIndex(ary, predicate) {
   for (var i = 0 ; i < ary.length ; i++) {
     if (predicate(ary[i] , i , ary)) {
@@ -237,6 +238,17 @@ function findIndex(ary, predicate) {
     }
   }
 }
+
+//绑定值,然后返回新的函数
+function bind(f, ...fixedArgs) {
+  return function(...args) { //返回的函数
+    return f(fixedArgs , ...args)  //绑定的参数在前，再回接的参数在后
+  }
+
+
+
+}
+
 
 //将上篇的松鼠人代码使用forEach改写
 function gatherCorrelations(journal) {
@@ -266,59 +278,399 @@ function gatherCorrelations(journal) {
 }
 
 
+//计算名为name的人，其有多少基因来源于Pauwels vanHaverbeke
+
+function computeGene(name) {
+  var person = byName[name]  //person本人
+  if (!person) {  // 如过不是person那就返回0
+    return 0
+  }
+  if (person.name == 'Pauwels van Haverbeke') {  //是‘Pauwls vanHaverbdeke 自己那就返回1’
+    return 1
+  }
+
+  var fatherName = person.father //  拿到父母的基因
+  var motherName = person.mother
+
+  var formFather = computeGene(fatherName)  //计算父亲母亲有多少基因来源于name
+  var formMother = computeGene(motherName)
+
+  return (formFather + formMother) / 2//然后求和除以2 返回
+}
 
 
 
 // 二叉树array中的根节点在rootpos位置的二叉树转换为二叉链表形式   将数组转成二叉树形式
-将存储于array中
-function arrayToTree(array ,rootPos = 0) {
-  if (array[rootPos] == null) {
+//将存储于array中
+function arrayToTree(array , rootPos = 0) {
+  if(array[rootPos] == null) {
     return null
   }
-  var root = {
+
+  root = {
     val: array[rootPos],
     left: null,
     right: null,
-
   }
 
-  root.left = arrayToTree[array,root * 2 + 1]
-  root.right = arrayToTree(array[rootPos * 2 + 2])
+    root.left = arrayToTree(array, rootPos * + 1)
+    root.right = arrayToTree(array,rootPos * 2 + 2)
 
   return root
+}
+function arrayToTree(array ,rootPos = 0) {  //rootPos是跟结点的位置
+    if (array[rootPos] == null) {
+      return null  //如果是空就直接返回空
+    }
+    var root = {  //不是空，就给它构建一个结点
+      val: array[rootPos],  //根节点的位置
+      left: null,
+      right: null,
 
+    }
+    var leftTree = arrayToTree[array,rootPos * 2 + 1] //那么左右的结点在这
+    var rightTree = arrayToTree(array ,rootPos * 2 + 2)  //调用函数树还原左右结点
+    //还原只有分别挂到根节点的左右结点上，那我们就得到了整颗树返回就可以了
+
+    root.left = leftTree
+    if (leftTree) { //leftree 存在才指向root
+      leftTree.parent = root  //它的节点指向 root根节点
+    }
+
+    root.right = rightTree
+    if (rightTree) { //rightTree存在才能让其根节点指向父节点
+      rightTree.parent = root
+    }
+
+    return root
 
 }
+
 
 
 //将二叉树形似的对象转成数组保存
+function treeToArray(root) {
+  var array = []  //在外面包一层函数，来获取值
+  function 把结点的值填入数组(root,pos = 0) {  //POS是根节点
+    if (root == null) {
+      return  // 结束条件
+    }
 
-function f() {
-  var array = []
-  function treeToArray(root,pos = 0) {
+    array[pos] = root.val  //数组的pos位置等于root根节点的值
+    把结点的值填入数组(root.left, pos * 2 + 1)   //把二叉树放到pos位置上
+    把结点的值填入数组(root.right ,pos * 2 + 2)
+  }
 
-    array[pos] = root.val
-    treeToArray(root.left,)
+  把结点的值填入数组(root)
+  return array
+}
+
+function treeToArray(root , pos = 0,array = []) {
+  if (root == null) {
+    return //递归的结束条件
+  }
+
+
+  array[pos] = root.val
+  treeToArray(root.left , pos * + 1 , array)
+  treeToArray(root.right , pos * + 2 ,array)  //调用函数实现分别把二叉树挂在根节点上，
+
+  return array
+}
+
+//将数组还原二叉树
+function condensedArrayToTree(array) {
+
+  if (array.length == 0) {
+    return null
+  }
+
+  var root = {
+    val: array[0],
+    left: null,
+    right: null,
+  }
+  var nodes  = [root]  //开始就往nodes结点里放
+  for (var i = 0 ; i < array.length ; i++) {
+    var currNode = nodes.shift() // 每次循环从前面取出一个结点  每次构建出来的下面代码的结点挂到currNond的后面
+    if (array[i] != null) {
+      //如果array的[i]的值不为空那么就就创建一个结点
+      var node = {
+        val: array[i],
+        left: null,
+        right: null,
+      }
+    }
+    currNode.left = node  //第一项我往左边挂
+    nodes.push(node)
+    i++
+
+    if (array[i] != null) {
+      var node = {
+        val: array[i],
+        left: null,
+        right: null,
+      }
+      currNond.right = node   //第二项往右边挂
+      nodes.push(node)
+    }
+  }
+
+  return root
+}
+
+//将二叉树转成数组  //这也可以是按层遍历，不考虑空值就是按层遍历
+function treeToCondensedArray(root) {
+  var ary = []  //创建空数组，将处理玩的结点往里放
+if (!root) {  //如果为空
+  return ary
+}
+
+  var nodes = [root]   //每次从nodes里取出一个结点
+
+  while (nodes.length) { //只要nodes结点还有长度，那就会进入循环
+      var node = nodes.shift() //从nodes里取出结点，给到node
+
+      if (node) {//如果node存在才把结点的值往里push
+        ary.push(node.val)  //再将取到结点的值往ary里放
+        nodes.push(node.left)
+        nodes.push(node.right)
+
+      } else {
+        ary.push(node)  //不存在就把结点本身的空值push进去
+      }
+
+  }
+
+  return ary
 
 }
 
-}
 
+/** 二叉树的遍历：
+ *先序遍历： 先遍历根结点，再遍历左子树，再最后遍历右子树，对子树的遍历依然遵循次规则去遍历
+ */
+function preOrderTraverse(root) {
 
-function arrayToTree(ary) {
-
-}
-
-
-
-function f(array) {
-
-  for (var i = 0 ; i < arry.length; i++) {
+  if (root) {//root存在才会进入遍历
+    console.log(root.val) // 先遍历根结点， 就是把根结点输出就可以了
+    preOrderTraverse(root.left)
+    preOrderTraverse(root.right)
+      // 然后遍历左子树再到右子树，运用递归去遍历
 
   }
 }
 
 
+//中序遍历
+function inOrderTraverse(root) {
+
+if (root) {//root存在才会进入遍历
+  inOrderTraverse(root.left)
+  console.log(root.val) // 先遍历根结点， 就是把根结点输出就可以了
+  OrderTraverse(root.right)
+    // 然后遍历左子树再到右子树，运用递归去遍历
+
+}
+}
+
+
+//后序遍历
+function postOrderTraverse(root) {
+
+if (root) {//root存在才会进入遍历
+  postOrderTraverse(root.left)
+  postOrderTraverse(root.right)
+  console.log(root.val) // 先遍历根结点， 就是把根结点输出就可以了
+    // 然后遍历左子树再到右子树，运用递归去遍历
+
+}
+}
+
+
+/** 二叉树的遍历：高阶版本
+ *先序遍历： 先遍历根结点，再遍历左子树，再最后遍历右子树，对子树的遍历依然遵循次规则去遍历
+ */
+ function preOrderTraverseH(root, action) {
+
+  if (root) {//root存在才会进入遍历
+    action(root.val) // 先遍历根结点， 就是把根结点输出就可以了
+    preOrderTraverseH(root.left,action)
+    preOrderTraverseH(root.right,action)
+      // 然后遍历左子树再到右子树，运用递归去遍历
+
+}
+}
+
+
+//中序遍历
+function inOrderTraverseH(root, action) {
+
+  if (root) {//root存在才会进入遍历
+  inOrderTraverseH(root.left,action)
+  action(root.val) // 先遍历根结点， 就是把根结点输出就可以了
+  OrderTraverseH(root.right,action)
+  // 然后遍历左子树再到右子树，运用递归去遍历
+
+}
+}
+
+
+//后序遍历
+function postOrderTraverseH(root, action) {
+
+  if (root) {//root存在才会进入遍历
+  postOrderTraverseH(root.left,action)
+  postOrderTraverseH(root.right,action)
+  action(root.val) // 先遍历根结点， 就是把根结点输出就可以了
+  // 然后遍历左子树再到右子树，运用递归去遍历
+
+}
+}
+
+//排序二叉树，二叉树搜索树
+//一颗二叉树中的每个结点左子树中得结点小于其他根节点
+// 每个结点得右子树中的结点大于等于其跟结点
+// 排序二叉树得中序遍历结果是有序得
+
+//通过val构架一个结点，并将结果插入到排序二叉树bst中得正确位置上
+//返回处理完成后得树得根节点
+// 中序遍历序列
+function insertIntoBST(bst , val) {
+
+  var node = {
+    val: val,
+    left: null,
+    right: null,
+  }
+  if (bst) {
+     if (node)
+  }
+}
+
+//利用二叉树来排序
+//构建一个颗空的排序二叉树，将数组ary中得元素都插入这颗二叉树
+//完成后，中序遍历二叉树即可得到有序结果
+function bstSort(ary) {
+  if (ary) {
+
+  } else {
+    node = {
+
+    }
+  }
+
+
+}
+
+
+a = [1,2,3]  //实现push函数
+a.push2 = function(val) {
+  this[this.length] = val
+  return this,length
+}
+
+a = [2,3,5,7]   //把数组传给函数，函数将得到转换成新的值返回
+a.map2 = function(mapper) {
+  var result = []
+  for (var i = 0 ; i < this.length; i++) {
+    result.push()
+  }
+}
+
+
+
+
+function keys(obj) {
+  var result = []
+  for (var key in obj) {
+    result.push(key)
+  }
+  return result
+
+}
+
+function keys(obj) {
+  var result = []
+  for (var key in obj) {
+    // if (obj.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      result.push(key)
+    }
+  }
+  return result
+}
+
+
+
+
+class Map2 {
+    constructor() {
+      this.keys = [] // 用来存储每组映射的key
+      this.vals = [] // 用来存储每组映射的val
+    }
+    get(key) {
+      var keyIdx = this.keys.indexOf(key)
+      if (keyIdx >= 0) {
+        return this.vals[keyIdx]
+      }
+      has(key) {  //判断映射中是否存在某个key的隐射
+        var keyIdx = this.keys.indexOf(key)
+        if(keyIdx >= 0) {
+          return true
+        }
+        return false
+      }
+    set(key, val) {  //设置key的映射目标为val
+      var keyIdx = this.keys.indexOf(key)
+      if (keyIdx >= 0) {
+
+      }
+    }
+    delete(key) {  //删除key的映射对
+      var keyIdx = this
+
+    }
+    clear() {  //清空所有的映射
+
+    }
+    size() {//返回当前Map中
+
+    }
+}
+
+
+
+class Stack {
+    constructor() {
+
+      this.top = null // 用于存储栈内元素的链表的头结点，由于头结点是栈顶，所以称为为top
+      this.size = 0
+     }
+
+    // 将元素val放入栈顶
+    push(val) {
+      var node = {
+        val: val,
+        node: this.top,
+      }
+      this.top = node
+      this.size++
+      return this
+
+    }
+    // 出栈
+    pop() {
+
+    }
+    // 查看栈顶元素的值，但不让它出栈
+    peek() {
+
+    }
+    size() {
+
+    }
+  }
 
 
 

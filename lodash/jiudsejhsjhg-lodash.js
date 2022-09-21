@@ -60,16 +60,16 @@ function drop(array, n = 1) {
 }
 
 function difference(array, ...values) {
-        var NewArray = []
-        var Array = []
-        Array = NewArray.flat()
-        for (var sum of array) {
-            if (!Array.includes(sum)) {
-                NewArray.push(sum)
-            }
+    let result = []
+    values = values.flat()
+    for (let i = 0; i < array.length; i++) {
+        if (!(values.includes(array[i]))) {
+            result.push(array[i])
         }
-        return NewArray
+    }
+    return result
 }
+
 
 function fill(array, val) {
 
@@ -154,6 +154,7 @@ function reduce(ary , reduce ,initialValue) {
     return max
 }
 
+
 function size(collection) {
     if (Array.isArray(collection)) {  //是数组就返回其长度
         return collection.length
@@ -167,13 +168,16 @@ function size(collection) {
         return count
     }
 }
+
+
 function find(ary , predicate) {
     for (var i = 0; i < ary.length; i++) {
         if (predicate(ary[i], i, ary)) {
            return ary[i]  //找到相同的元素，并返回该元素
        }
     }
-    }
+}
+
 
 function findIndex(ary ,predicate){
     for (var i = 0; i < ary.length; i++) {
@@ -181,6 +185,46 @@ function findIndex(ary ,predicate){
             return i
         }
     }
+}
+
+
+
+
+function bind(f , fixedArgs) {
+    return function (...args) {
+        return f(fixedArgs , ...args)
+    }
+}
+
+
+
+function max(array) {
+    if (array.length == 0) {
+        return undefined
+    }
+    var max = 0
+    for (var i = 0; i < array.length; i++) {
+        if (max < array[i]) {
+            max = array[i]
+        }
+    }
+  return  max
+
+}
+
+
+
+function min(array) {
+    if (array.length == 0) {
+        return undefined
+    }
+    var min = Infinity
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] < min) {
+            min = array[i]
+        }
+    }
+    return min
 }
 
 
@@ -201,7 +245,9 @@ return {
     reduce,
     size,
     findIndex,
-
+    bind,
+    max,
+    min,
 
 
 
