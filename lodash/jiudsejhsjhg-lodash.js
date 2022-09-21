@@ -234,6 +234,52 @@ function add(augend,augend2) {
     }
 }
 
+
+function isNil(value) {
+    if (value == null || 0) {
+        return true
+    }
+    if (value == undefined) {
+        return true
+    }
+    return false
+}
+
+
+
+function isNaN(value) {
+    if (value != NaN) {
+        return true
+    }
+    if (value == Array(undefined)) {
+        return true
+    }
+
+    return false
+}
+
+
+function map(mapper) {
+    var result = []
+    for (var i = 0 i < globalThis.length; i++) {
+        result.push(mapper(this[i]))
+    }
+    return result
+}
+
+
+function size(array) {
+    if (Array.isArray(array) || typeof array == 'string') {
+        return array.length
+    }
+    if (typeof array == 'object') {
+        var ary = object.keys(array)
+        return ary.length
+    }
+}
+
+
+
 return {
     chunk,
     compact,
@@ -254,6 +300,12 @@ return {
     max,
     min,
     add,
+    isNil,
+    isNaN,
+    map,
+    size,
+
+
 
 
 }
