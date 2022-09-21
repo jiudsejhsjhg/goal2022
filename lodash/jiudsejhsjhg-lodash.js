@@ -133,7 +133,7 @@ function every(ary,predicate) {
 
 function some(ary,predicate) {
     for (var i = 0; i < ary.length; i++) {
-        if (find(predicate(ary[i], i, ary))) {
+        if (this.predicateIs(predicate)(ary[i] ,i, ary) == true) {
             return true
         }
     }
@@ -228,6 +228,11 @@ function min(array) {
 }
 
 
+function add(augend,augend2) {
+    if (augend || augend2) {
+        return augend + augend2
+    }
+}
 
 return {
     chunk,
@@ -248,7 +253,7 @@ return {
     bind,
     max,
     min,
-
+    add,
 
 
 }
