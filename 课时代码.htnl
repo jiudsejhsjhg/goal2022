@@ -571,7 +571,7 @@ a.push2 = function(val) {
 }
 
 a = [2,3,5,7]   //把数组传给函数，函数将得到转换成新的值返回
-a.map2 = function(mapper) {
+a.map3 = function(mapper) {
   var result = []
   for (var i = 0 ; i < this.length; i++) {
     result.push()
@@ -590,7 +590,7 @@ function keys(obj) {
 
 }
 
-function keys(obj) {
+function keys2(obj) {
   var result = []
   for (var key in obj) {
     // if (obj.hasOwnProperty(key)) {
@@ -604,75 +604,416 @@ function keys(obj) {
 
 
 
-class Map2 {
+
+class Map2 {  //添加下划线表示内部状态,  修改了破坏内部状态自付
+  constructor () {
+    this._keys = []   //每组映射的key
+    this._vals = []   //每组映射的val
+  }
+  get (key) {
+    var keyIdx = this._keys.indexOf(key)  //在key这个数组里找它的下标
+    if (keyIdx >= 0) {  //keyIdx他大于等于说明有找到
+      return this.vals[keyIdx] //那就在val这个数组里找到映射的值
+    }
+//什么都不做返回得是undefined
+  }
+  has (key) {  //判断映射中是否存在某个key的映射
+    var keyIdx = this._keys.indexOf(key)
+    if (keyIdx >= 0){  //他大于等0 说明有他的映射目标，所以返回true
+      return true
+    }
+    return false  //反之返沪false
+  }
+  set (key , val) {   ///key的映射目标为val
+    var keyIdx = this._keys.indexOf(key)
+    if (keyIdx >= 0) {  //说明有key这个映射目标
+      this._vals[keyIdx] = val  //将val上的keyIdx属性改为val
+    } else {
+      this._keys.push(key)
+      this._vals.push(val)  //如果没有就创建出key 和val的值
+    }
+    return this
+
+  }
+  delete (key) {  //删除key的映射对
+    var keyIdx = this.keys.indexOf(kry)
+    if (keyIdx >= 0) {  //判断是否有该值，有就删除，没有返回false
+      this._keys.splice(keyIdx,1)
+      this._vals.splice(keyIdx, 1) //利用函数splice删除一项
+      return true
+    }
+    return false
+  }
+  clear () {  //清空所有的映射
+    this._keys = []
+    this._vals = []
+  }
+  size () { //返回挡前map
+
+    return this._keys.length
+
+  }
+}
+
+
+class Map3 {  //#号让外部没办法访问到内部的代码
+  this.#keys = []   //每组映射的key
+  this.#vals = []   //每组映射的val
+  constructor () {
+  }
+  get (key) {
+    var keyIdx = this.#keys.indexOf(key)  //在key这个数组里找它的下标
+    if (keyIdx >= 0) {  //keyIdx他大于等于说明有找到
+      return this.vals[keyIdx] //那就在val这个数组里找到映射的值
+    }
+  //什么都不做返回得是undefined
+  }
+  has (key) {  //判断映射中是否存在某个key的映射
+    var keyIdx = this.#keys.indexOf(key)
+    if (keyIdx >= 0){  //他大于等0 说明有他的映射目标，所以返回true
+      return true
+    }
+    return false  //反之返沪false
+  }
+  set (key , val) {   ///key的映射目标为val
+    var keyIdx = this.#keys.indexOf(key)
+    if (keyIdx >= 0) {  //说明有key这个映射目标
+      this._vals[keyIdx] = val  //将val上的keyIdx属性改为val
+    } else {
+      this.#keys.push(key)
+      this.#vals.push(val)  //如果没有就创建出key 和val的值
+    }
+    return this
+
+  }
+  delete (key) {  //删除key的映射对
+    var keyIdx = this.keys.indexOf(kry)
+    if (keyIdx >= 0) {  //判断是否有该值，有就删除，没有返回false
+      this.#keys.splice(keyIdx,1)
+      this.#vals.splice(keyIdx, 1) //利用函数splice删除一项
+      return true
+    }
+    return false
+  }
+  clear (key) {  //清空所有的映射
+    this.#keys = []
+    this.#vals = []
+  }
+  size (key) { //返回挡前map
+
+    return this.#keys.length
+
+  }
+}
+
+
+
+class Stack {// 内部使用链表实现
     constructor() {
-      this.keys = [] // 用来存储每组映射的key
-      this.vals = [] // 用来存储每组映射的val
+
+      this.top = null // 用于存储栈内元素的链表的头结点，由于头结点是栈顶，所以起名top
+      this._size = 0 //记录栈的长度
+     }
+
+    // 将元素val放入栈顶
+    push(val) {
+    var node = {  //先构建一个结点
+      val: val,
+      next: this.top, //新结点让指向头结点
     }
-    get(key) {
-      var keyIdx = this.keys.indexOf(key)
-      if (keyIdx >= 0) {
-        return this.vals[keyIdx]
+    this.top = node  //头结点也指向新的结点    让新的结点成为栈顶
+    this._size++   //记录栈里的元素数量
+    return this
+
+    }
+    // 出栈
+    pop(val) {
+      if (this.top) {
+        //存在才会进行以下的操作
+        var result = this.top.val  //将值保存值result
+        this.top = this.top.next  //让其指向下一个结点
+        this._size--  //出栈就要减去值
+        return result //返回新的指向的结点
       }
-      has(key) {  //判断映射中是否存在某个key的隐射
-        var keyIdx = this.keys.indexOf(key)
-        if(keyIdx >= 0) {
-          return true
-        }
-        return false
+
+    }
+    // 查看栈顶元素的值，但不让它出栈
+    peek(val) {
+      if (this.top) {
+        return this.top.val  //栈顶存在就返回其头结点
       }
-    set(key, val) {  //设置key的映射目标为val
-      var keyIdx = this.keys.indexOf(key)
-      if (keyIdx >= 0) {
-
-      }
-    }
-    delete(key) {  //删除key的映射对
-      var keyIdx = this
 
     }
-    clear() {  //清空所有的映射
-
-    }
-    size() {//返回当前Map中
-
+    size(val) {
+      return this._size
     }
 }
 
 
 
-class Stack {
-    constructor() {
 
-      this.top = null // 用于存储栈内元素的链表的头结点，由于头结点是栈顶，所以称为为top
-      this.size = 0
-     }
 
-    // 将元素val放入栈顶
-    push(val) {
-      var node = {
-        val: val,
-        node: this.top,
+//使用链表实现队列的抽象数据结构
+class Queue {
+
+  constructor () {
+    this._head = null  //记录头结点
+    this._tail = null  // 记录尾巴结点
+    this._size = 0 // 记录结点的数量
+
+
+  }
+  // 进队
+  enqueue (val) {
+    var node = {
+      val,
+      next: null,
+    }
+    this._size++
+    if (this._head == null) {
+      this._head = this._tail = node
+      // 结点为空。那么进队将头结点和尾巴结点指向创建的结点
+    } else {
+      this._tail.next = node  //队列是从尾巴结点进队，所以尾巴结点指向下一个
+      this._tail = node
+    }
+    return this
+  }
+  // 出队 ，将队头元素返回并从队列里删除
+  dequeue (val) {
+    if (this._head) {
+      this._size--
+      var result = this._head.val  //向将值存储至result
+      if (this._head == this._tail) {  //存在的情况下，如果头结点和尾巴结点指向同一个值
+        this._head = this._tail = null // 头尾结点删掉这个值，之后都指向空
+      } else {
+        this._head = this._head.next //不相等就将头结点指向下一个
       }
-      this.top = node
-      this.size++
-      return this
 
+      return result
     }
-    // 出栈
-    pop() {
-
+//头结点没有的时候什么的都需要做，直接会返回undefined
+  }
+  //查看队头元素的值
+  peek () {
+    if (this._head) {
+      return this._head.val  //如果this._head存在就返回该值的val
     }
-    // 查看栈顶元素的值，但不让它出栈
-    peek() {
+  }
+  size () {
+    return  this._size
+  }
+}
 
+
+//表示一个集合；不重复的无序元素组成的东西
+class Group {
+  constructor() {
+    this.elements = []  //创建一个空数组储存
+  }
+ // 为集合添加一个元素
+  add(val) {
+    if (!this.has(val)) {  // 调用函数，查看有没有val这个值
+      this.elements.push(val) //没有这个val，就往空数组里push
     }
-    size() {
+    //有的话就什么都不做，返回实例 this
+    return this
+  }
+  //返回的集合中是否有val这个元素
+  has(val) {
+    if (this.elements.indexOf(val) >= 0) {   //如果this.elements的下标大于等于零，就说明存在
+      return true
+    }
+    return false
+  }
+  delete(val) {  //从集合中删除val元素，返回是否删除成功
+    var validx = this.elements.indexOf(val)  //让validx拿到其下标和值
+    if (validx >= 0) {  //如果大于等于零，说明存在
+      this.elements.splice(validx , 1)  //那么删除掉一位
+      return true  //删除成功返回true
+    }
+    return false
+  }
+  size() {
+    return this.elements.length   //返回数组的长度
+  }
+}
 
+
+
+//二维向量
+class Vector {
+  constructor(x , y) {
+    this.x = x
+    this.y = y   //将值存储
+
+  }
+  //用于当前向量加上一个向量v，返回新的结果向量
+  plus(v) {
+    var x = this.x + v.x
+    var y = this.y + v.y
+    //这两个向量就是新向量的维度数据
+    return new Vector(x , y)  //new出新的向量返回
+
+  }
+  //用户当前的向量减去一个向量v，返回新的结果向量
+  minus(v) {
+    var x = this.x - v.x
+    var y = this.y - v.y
+    return new Vector(x , y)
+  }
+  length() {
+    return Math.sqrt(this.x ** 2, this.y ** 2 )
+  }
+}
+
+
+// 实现复数及其四则运算
+class Complex {
+    constructor(real, imag) {
+      this.real = real
+      this.imag = imag
+    }
+    plus(c) {
+      var real = this.real + c.real
+      var imag = this.imag + c.imal
+
+      return new Complex(real, imag)
+    }
+    minus(c) {
+      var real = this.real - c.real
+      var imag = this.imag - c.imag
+
+      return new Complex(real, imag)
+    }
+    mul(c) {
+      var real = this.real * c.real - this.imag * c.imag
+      var imag = this.imag * c.real + this.real * c.imag
+
+      return new Complex(real, imag)
+    }
+    divide(c) {
+      var help = new Complex(c.real, -c.imag)
+
+      var up = this.mul(help)
+      var down = c.mul(help)
+
+      var real = up.real / down.real
+      var imag = up.imag / down.real
+
+      return new Complex(real, imag)
+    }
+
+    // 以 (3+2j) 的形式返回复数的字符串形式
+    toString() {
+      return `(${this.real}+${this.imag}i)`
     }
   }
 
+  var c1 = new Complex(2, 3)
+  var c2 = new Complex(5, -1)
+  var c3 = c1.mul(c2)
 
+
+
+
+//实现数组接口  对象实现了迭代接口就称为iterable
+// 调用迭代器接口返回的对象叫iterator（
+
+
+var map = new Map
+function SymbolFor(key) {
+  if (map.has(key)) {
+    return map.get(key)
+  } else {
+    var s = Symbol(key)
+    map.set(key , s)
+    return s
+  }
+}
+
+
+
+//实现数组的迭代器方法
+//对象实现了迭代接口的就称为iterable（可迭代对象）
+// 调用迭代器接口返回的对象叫iterator（迭代器）
+a = [2,3,5,7,11]   //this是a
+a[Symbol.iterator] = function() {
+var i = 0 //用来记录这一次的迭代状态，来看迭代到第几元素了
+    return {
+      next: () => {  //使用箭头函数就能将this跑到外层  ，next每次都是要重新调用的，只能将状态存在外面
+        return {
+          value: this[i++],
+          done: i > this.length,
+        }
+      }
+    }
+}
+a[Symbol.iterator] = function() {
+  var array = this //this是a
+  return {
+    currentIdx: 0,   //拿对象来记录自身的状态
+    next: function() {
+      return {
+        value:array[this.currentIdx++], //array是数组
+        done: this.currentIdx > array.length,
+      }
+    }
+  }
+}
+
+
+// 输出1~10的值  (阿里巴巴校招面试题)
+Number.prototype[Symbol.iterator] = function() {
+  var target = this    //target就是10
+  var curr = 1  //起始的值
+  return {
+    next() {
+      return {
+        value: curr++,   //迭代完一次就++
+        done: curr >= target + 1, //curr》 target 那就为真了
+      }
+    }
+  }
+}
+for (var n of 10) {
+  console.log(n)
+}
+
+
+Object.defineProperty(obj,'baz' , {
+  get: function() {},//get和set分别作为对象和bza的函数
+  set:  function(val) {},  //这个set是obj对象和baz属性的set
+})
+
+
+//继承
+class Creature {
+
+constructor(age) {
+  this.age = age //将传入的age保存
+}
+grow() {
+  this.age++
+}
+
+
+}
+
+class Animal {
+  constructor(age , name) {
+    this.age = age
+    this.name = name //宠物有名字
+    this.x = 0 //动物的初始位置为0
+  }
+  grow() {
+    this.age++
+  }
+  move() {
+
+  }
+
+}
 
 
 

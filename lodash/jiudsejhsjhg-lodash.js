@@ -51,6 +51,16 @@ function drop(array, n = 1) {
     return array
 }
 
+function drop(arr, n = 1) {
+    let res = []
+    for (let i = 0; i < arr.length - n; i++) {
+        res[i] = arr[i + n]
+    }
+    return res
+}
+
+
+
 function drop(array, n = 1) {
       a = []   //
      for (var i = n; i < array.length; i++) {
@@ -261,7 +271,7 @@ function isNaN(value) {
 
 function map(mapper) {
     var result = []
-    for (var i = 0 i < globalThis.length; i++) {
+    for (var i = 0; i < globalThis.length; i++) {
         result.push(mapper(this[i]))
     }
     return result
@@ -273,13 +283,36 @@ function size(array) {
         return array.length
     }
     if (typeof array == 'object') {
-        var ary = object.keys(array)
-        return ary.length
+        var ary = object.key(array)
+        return ary
     }
 }
 
 
+function isNull (value) {
 
+    return value == null
+}
+
+
+
+function isNumber (value) {
+    if (Number(value)) {
+        return true
+    }
+    if (value == typeof 'object') {
+        return true
+    }
+    if (value == typeof 'string') {
+        return false
+    }
+    return false
+}
+
+
+
+
+    
 return {
     chunk,
     compact,
@@ -304,6 +337,7 @@ return {
     isNaN,
     map,
     size,
+    isNull,
 
 
 
