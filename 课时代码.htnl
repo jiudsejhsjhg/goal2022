@@ -1004,7 +1004,7 @@ class Animal {
   constructor(age , name) {
     this.age = age
     this.name = name //宠物有名字
-    this.x = 0 //动物的初始位置为0
+    this.x = 0 //动物的初始
   }
   grow() {
     this.age++

@@ -309,10 +309,38 @@ function isNumber (value) {
     return false
 }
 
+function head(array) {
+    if (array.length == 0) {
+        return undefined  //数组的长度为零返回undefined
+    } else {
+        return array[0] //返回第0项数组
+    }
+
+}
+
+function fromPairs(pairs) {
+    var a = {}
+    for (var i = 0; i < pairs.length; i++) {
+        a[pairs[i][0]] = pairs[i][1]
+    }
+    return a
+}
+
+
+function join(array, separstor = ',') {
+    var result = ''
+    has = false //记录第1次的循环
+    for (var i = 0; i < array.length; i++) {
+        if (has) {
+            result += separstor
+            result += array[i]
+            has = true
+    }
+    return result
+}
 
 
 
-    
 return {
     chunk,
     compact,
@@ -338,7 +366,9 @@ return {
     map,
     size,
     isNull,
-
+    head,
+    isNumber,
+    fromPairs,
 
 
 
